@@ -1,6 +1,9 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using Microsoft.Extensions.Logging;
 
-namespace AzureDevOpsTools.Presentation.Services
+namespace AzureDevOpsTools.Service
 {
     public interface IService
     {

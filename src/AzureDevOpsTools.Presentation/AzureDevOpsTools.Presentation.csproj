@@ -52,9 +52,16 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0-rc.1.20451.14" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-rc.1.20451.14" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="ReactiveUI.WPF" Version="11.5.35" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\AzureDevOpsTools.Framework\AzureDevOpsTools.Framework.csproj" />
+    <ProjectReference Include="..\AzureDevOpsTools.Model\AzureDevOpsTools.Model.csproj" />
+    <ProjectReference Include="..\AzureDevOpsTools.Service\AzureDevOpsTools.Service.csproj" />
   </ItemGroup>
   
   <ItemGroup>
