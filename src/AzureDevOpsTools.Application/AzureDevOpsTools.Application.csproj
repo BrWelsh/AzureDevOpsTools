@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>AzureDevOpsTools</RootNamespace>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <Version>0.0.9-alpha.1</Version>
+    <InformationalVersion>0.0.9-alpha.1</InformationalVersion>
+    <Authors>Brian Welsh, welshnson.com</Authors>
+    <Company>Brian Welsh, welshnson.com</Company>
+    <Product>welshnson.com Azure DevOps Tools</Product>
+    <Description>Azure DevOps tools on the desktop</Description>
+    <Copyright>©2020, Brian Welsh, welshnson.com</Copyright>
+  </PropertyGroup>
+
+</Project>
