@@ -17,17 +17,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Service", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Model", "AzureDevOpsTools.Model\AzureDevOpsTools.Model.csproj", "{ADF984A0-4B9D-4EF5-A206-63DC3EF0AFEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevOpsTools.Application.Tests", "AzureDevOpsTools.Application.Tests\AzureDevOpsTools.Application.Tests.csproj", "{FDA73982-6983-420D-967A-F1FCC777B336}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Application.Tests", "AzureDevOpsTools.Application.Tests\AzureDevOpsTools.Application.Tests.csproj", "{FDA73982-6983-420D-967A-F1FCC777B336}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevOpsTools.Framework.Tests", "AzureDevOpsTools.Framework.Tests\AzureDevOpsTools.Framework.Tests.csproj", "{EF6DDD09-E98A-40B3-84D2-8C5463CC54B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Framework.Tests", "AzureDevOpsTools.Framework.Tests\AzureDevOpsTools.Framework.Tests.csproj", "{EF6DDD09-E98A-40B3-84D2-8C5463CC54B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevOpsTools.Model.Tests", "AzureDevOpsTools.Model.Tests\AzureDevOpsTools.Model.Tests.csproj", "{6A4A5882-F892-4EF3-BCA6-E5520515935B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Model.Tests", "AzureDevOpsTools.Model.Tests\AzureDevOpsTools.Model.Tests.csproj", "{6A4A5882-F892-4EF3-BCA6-E5520515935B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevOpsTools.Presentation.Tests", "AzureDevOpsTools.Presentation.Tests\AzureDevOpsTools.Presentation.Tests.csproj", "{8A6F056F-D17C-4BF2-9649-7F29232252C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Presentation.Tests", "AzureDevOpsTools.Presentation.Tests\AzureDevOpsTools.Presentation.Tests.csproj", "{8A6F056F-D17C-4BF2-9649-7F29232252C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevOpsTools.Service.Tests", "AzureDevOpsTools.Service.Tests\AzureDevOpsTools.Service.Tests.csproj", "{9A0382F9-D7F1-4C70-B6E2-E96A110CA5E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Service.Tests", "AzureDevOpsTools.Service.Tests\AzureDevOpsTools.Service.Tests.csproj", "{9A0382F9-D7F1-4C70-B6E2-E96A110CA5E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevOpsTools.Extensions", "AzureDevOpsTools.Extensions\AzureDevOpsTools.Extensions.csproj", "{055028D2-C70A-4C24-B44B-D4EF43C8D218}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Extensions", "AzureDevOpsTools.Extensions\AzureDevOpsTools.Extensions.csproj", "{055028D2-C70A-4C24-B44B-D4EF43C8D218}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{A55020D6-58E1-455D-9F86-95FEB95DC0EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevOpsTools.Extensions.Tests", "AzureDevOpsTools.Extensions.Tests\AzureDevOpsTools.Extensions.Tests.csproj", "{A68FCDAC-8C5E-48F1-BDBD-E73E6327F2D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,9 +83,21 @@ Global
 		{055028D2-C70A-4C24-B44B-D4EF43C8D218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{055028D2-C70A-4C24-B44B-D4EF43C8D218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{055028D2-C70A-4C24-B44B-D4EF43C8D218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A68FCDAC-8C5E-48F1-BDBD-E73E6327F2D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A68FCDAC-8C5E-48F1-BDBD-E73E6327F2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A68FCDAC-8C5E-48F1-BDBD-E73E6327F2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A68FCDAC-8C5E-48F1-BDBD-E73E6327F2D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FDA73982-6983-420D-967A-F1FCC777B336} = {A55020D6-58E1-455D-9F86-95FEB95DC0EA}
+		{EF6DDD09-E98A-40B3-84D2-8C5463CC54B8} = {A55020D6-58E1-455D-9F86-95FEB95DC0EA}
+		{6A4A5882-F892-4EF3-BCA6-E5520515935B} = {A55020D6-58E1-455D-9F86-95FEB95DC0EA}
+		{8A6F056F-D17C-4BF2-9649-7F29232252C0} = {A55020D6-58E1-455D-9F86-95FEB95DC0EA}
+		{9A0382F9-D7F1-4C70-B6E2-E96A110CA5E6} = {A55020D6-58E1-455D-9F86-95FEB95DC0EA}
+		{A68FCDAC-8C5E-48F1-BDBD-E73E6327F2D9} = {A55020D6-58E1-455D-9F86-95FEB95DC0EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1C22FBA-DD4E-4EAB-A7DB-CCD16E3FA0DB}
