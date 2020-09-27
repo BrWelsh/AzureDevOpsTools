@@ -16,5 +16,9 @@
     <Copyright>©2020, Brian Welsh, welshnson.com</Copyright>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0-rc.1.20451.14" />
+  </ItemGroup>
+
 
 </Project>

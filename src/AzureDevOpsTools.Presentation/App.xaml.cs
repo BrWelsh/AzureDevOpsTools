@@ -4,10 +4,9 @@ using System.IO;
 using System.Runtime;
 using System.Windows;
 using System.Windows.Threading;
-
+using AzureDevOpsTools.Model.Settings;
 using AzureDevOpsTools.Presentation.Extensions;
 using AzureDevOpsTools.Presentation.Internal;
-using AzureDevOpsTools.Presentation.Models.Settings;
 using AzureDevOpsTools.Presentation.Services;
 using AzureDevOpsTools.Presentation.Utility;
 using AzureDevOpsTools.Presentation.ViewModels;

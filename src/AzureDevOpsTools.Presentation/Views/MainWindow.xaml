@@ -6,12 +6,17 @@
         xmlns:local="clr-namespace:AzureDevOpsTools.Presentation.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+
+    </Window.Resources>
     <DockPanel LastChildFill="True">
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem Content="StatusBarItem" Margin="3,0,0,0" />
         </StatusBar>
         <DockPanel LastChildFill="True">
-            <ContentPresenter DockPanel.Dock="Left" /> <!-- Control Center -->
+            <ContentPresenter DockPanel.Dock="Left" />
+            <!-- Control Center -->
+            <Button Width="30" Height="30" Background="{StaticResource Settings_Inverse_16x}"/>
             <ContentPresenter />
         </DockPanel>
     </DockPanel>

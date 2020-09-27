@@ -1,7 +1,8 @@
 using System.IO;
 using System.Threading.Tasks;
-using AzureDevOpsTools.Presentation.Models.Settings;
+using AzureDevOpsTools.Model.Settings;
 using AzureDevOpsTools.Presentation.Utility;
+using AzureDevOpsTools.Service;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;

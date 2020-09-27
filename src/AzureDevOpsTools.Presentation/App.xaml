@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:AzureDevOpsTools.Presentation"
              >
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/ImageLibrary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>        
     </Application.Resources>
 </Application>

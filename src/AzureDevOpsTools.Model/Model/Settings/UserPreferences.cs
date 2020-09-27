@@ -1,6 +1,9 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using Newtonsoft.Json;
 
-namespace AzureDevOpsTools.Presentation.Models.Settings
+namespace AzureDevOpsTools.Model.Settings
 {
     public class PersonalAccessToken
     {
@@ -68,3 +71,4 @@ namespace AzureDevOpsTools.Presentation.Models.Settings
         }
     }
 }
+

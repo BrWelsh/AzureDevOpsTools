@@ -1,6 +1,9 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace AzureDevOpsTools.Presentation.ViewModels
+namespace AzureDevOpsTools.Framework.ViewModels
 {
     public interface IViewModel
     {
