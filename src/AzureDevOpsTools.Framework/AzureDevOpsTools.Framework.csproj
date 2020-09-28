@@ -13,8 +13,20 @@
     <Product>welshnson.com Azure DevOps Tools</Product>
     <Description>Azure DevOps tools on the desktop</Description>
     <Copyright>©2020, Brian Welsh, welshnson.com</Copyright>
+    <PackageProjectUrl>https://github.com/users/BrWelsh/projects/1</PackageProjectUrl>
+    <RepositoryType>github</RepositoryType>
+    <RepositoryUrl>https://github.com/BrWelsh/AzureDevOpsTools</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

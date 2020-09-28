@@ -44,7 +44,7 @@ namespace AzureDevOpsTools.Presentation
 
             Directory.CreateDirectory(ApplicationInfo.UserProfilePath);
 
-            host = ConfigureHost();
+            host = App.ConfigureHost();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
@@ -61,7 +61,7 @@ namespace AzureDevOpsTools.Presentation
             MainWindow = host.Services.GetRequiredService<MainWindow>();
             IMainViewModel vm = host.Services.GetRequiredService<IMainViewModel>();
 
-            await vm.InitializeAsync(null);
+            await vm.InitializeAsync(null).ConfigureAwait(false);
 
             MainWindow.DataContext = vm;
 
@@ -75,17 +75,17 @@ namespace AzureDevOpsTools.Presentation
 
         protected override async void OnExit(ExitEventArgs e)
         {
-            await host.Services.GetService<IApplicationContextService>().Save();
+            await host.Services.GetService<IApplicationContextService>().Save().ConfigureAwait(false);
 
             using (host)
             {
-                await host.StopAsync();
+                await host.StopAsync().ConfigureAwait(false);
             }
             base.OnExit(e);
         }
 
 
-        private IHost ConfigureHost()
+        private static IHost ConfigureHost()
         {
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>

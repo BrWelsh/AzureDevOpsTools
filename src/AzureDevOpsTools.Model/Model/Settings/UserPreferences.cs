@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -7,6 +8,8 @@ namespace AzureDevOpsTools.Model.Settings
 {
     public class PersonalAccessToken
     {
+        public static readonly PersonalAccessToken Empty = new PersonalAccessToken();
+
         public PersonalAccessToken()
         {
             Name = string.Empty;
@@ -18,11 +21,15 @@ namespace AzureDevOpsTools.Model.Settings
 
         [JsonProperty("value")]
         public string Value { get; set; }
+
     }
 
     public class UserPreferences
     {
-        private PersonalAccessToken accessToken = null;
+
+        public static readonly UserPreferences Empty = new UserPreferences();
+
+        private PersonalAccessToken accessToken = PersonalAccessToken.Empty;
 
         public UserPreferences()
         {
@@ -34,7 +41,7 @@ namespace AzureDevOpsTools.Model.Settings
         {
             get
             {
-                if (accessToken == null)
+                if (accessToken == PersonalAccessToken.Empty)
                 {
                     accessToken = new PersonalAccessToken();
                 }
@@ -52,13 +59,14 @@ namespace AzureDevOpsTools.Model.Settings
 
     public class UserPreferencesRoot
     {
-        private UserPreferences userPreferences = null;
+        private UserPreferences userPreferences = UserPreferences.Empty;
+
         [JsonProperty("userPreferences")]
         public UserPreferences UserPreferences
         {
             get
             {
-                if (userPreferences == null)
+                if (userPreferences == UserPreferences.Empty)
                 {
                     userPreferences = new UserPreferences();
                 }

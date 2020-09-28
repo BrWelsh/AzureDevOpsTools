@@ -35,7 +35,8 @@ namespace AzureDevOpsTools.Framework.ViewModels
             IsReady = false;
             try
             {
-                await DoInitializeAsync(parameter);
+                Task task = DoInitializeAsync(parameter);
+                await task.ConfigureAwait(false);
             }
             finally
             {
