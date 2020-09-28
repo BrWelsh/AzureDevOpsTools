@@ -24,4 +24,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AzureDevOpsTools.Model\AzureDevOpsTools.Model.csproj" />
+    <ProjectReference Include="..\AzureDevOpsTools.Presentation.Tests\AzureDevOpsTools.Presentation.Tests.csproj" />
+    <ProjectReference Include="..\AzureDevOpsTools.UnitTest.Framework\AzureDevOpsTools.UnitTest.Framework.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -26,6 +26,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AzureDevOpsTools.Presentation\AzureDevOpsTools.Presentation.csproj" />
+    <ProjectReference Include="..\AzureDevOpsTools.UnitTest.Framework\AzureDevOpsTools.UnitTest.Framework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

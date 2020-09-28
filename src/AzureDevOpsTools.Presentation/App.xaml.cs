@@ -99,10 +99,10 @@ namespace AzureDevOpsTools.Presentation
                 })
                 .ConfigureAppConfiguration((context, appConfig) =>
                 {
-                    appConfig.SetBasePath(ApplicationInfo.UserProfilePath);
-                    appConfig.AddJsonFile(Path.Combine(ApplicationInfo.ApplicationPath, "appSettings.json"), optional: false);
-                    appConfig.AddJsonFile(Path.Combine(ApplicationInfo.ApplicationPath, $"appSettings.{ context.HostingEnvironment.EnvironmentName}.json"), optional: true);
-                    appConfig.AddJsonFile("userPreferences.json", optional: true);
+                    // appConfig.SetBasePath(P);
+                    appConfig.AddJsonFile("appSettings.json", optional: false);
+                    appConfig.AddJsonFile($"appSettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true);
+                    appConfig.AddJsonFile("userPreferences.json", optional: false);
                     appConfig.AddEnvironmentVariables();
                     appConfig.AddCommandLine(Environment.GetCommandLineArgs());
                 })

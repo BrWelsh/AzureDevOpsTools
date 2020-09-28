@@ -24,4 +24,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AzureDevOpsTools.Extensions\AzureDevOpsTools.Extensions.csproj" />
+  </ItemGroup>
+
 </Project>

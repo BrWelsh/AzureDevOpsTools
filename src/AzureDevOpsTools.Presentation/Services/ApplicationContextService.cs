@@ -1,24 +1,22 @@
-using System.IO;
 using System.Threading.Tasks;
 using AzureDevOpsTools.Model.Settings;
-using AzureDevOpsTools.Presentation.Utility;
 using AzureDevOpsTools.Service;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 
+#pragma warning disable IDE0032 // Use auto property
 namespace AzureDevOpsTools.Presentation.Services
 {
     public class ApplicationContextService : ServiceBase, IApplicationContextService
     {
-#pragma warning disable IDE0032 // Use auto property
+
         private readonly ApplicationSettings applicationSettings;
-        private readonly UserPreferencesRoot userPreferences;
-#pragma warning restore IDE0032 // Use auto property
+        private readonly UserPreferences userPreferences;
+
 
         public ApplicationContextService(
                 IOptions<ApplicationSettings> appSettings,
-                IOptions<UserPreferencesRoot> userPrefs,
+                IOptions<UserPreferences> userPrefs,
                 ILogger<ApplicationContextService> logger)
             : base(logger)
         {
@@ -28,16 +26,12 @@ namespace AzureDevOpsTools.Presentation.Services
 
         public ApplicationSettings ApplicationSettings => applicationSettings;
 
-        public UserPreferences UserPreferences => userPreferences.UserPreferences;
+        public UserPreferences UserPreferences => userPreferences;
 
         public Task Save()
         {
-            string json = JsonConvert.SerializeObject(userPreferences);
-            System.IO.File.WriteAllText(Path.Combine(ApplicationInfo.UserProfilePath, "userPreferences.json"), json);
-
             return Task.CompletedTask;
-
-
         }
     }
 }
+#pragma warning restore IDE0032 // Use auto property

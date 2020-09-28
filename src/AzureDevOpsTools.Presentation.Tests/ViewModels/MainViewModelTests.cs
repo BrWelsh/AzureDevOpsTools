@@ -1,18 +1,25 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AzureDevOpsTools.Presentation.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AzureDevOpsTools.UnitTest.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AzureDevOpsTools.Presentation.ViewModels.Tests
 {
     [TestClass()]
-    public class MainViewModelTests
+    public class MainViewModelTests : UnitTestBase<MainViewModelTests>
     {
+        [TestInitialize]
+        public override void Initialize()
+        {
+        }
+
         [TestMethod()]
         public void MainViewModelTest()
         {
-            Assert.Fail();
+
+        }
+
+        [TestCleanup]
+        public override void TestCleanup()
+        {
         }
     }
 }
