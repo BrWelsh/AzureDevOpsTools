@@ -11,8 +11,10 @@ namespace AzureDevOpsTools.Presentation.Services
 {
     public class ApplicationContextService : ServiceBase, IApplicationContextService
     {
+#pragma warning disable IDE0032 // Use auto property
         private readonly ApplicationSettings applicationSettings;
         private readonly UserPreferencesRoot userPreferences;
+#pragma warning restore IDE0032 // Use auto property
 
         public ApplicationContextService(
                 IOptions<ApplicationSettings> appSettings,
@@ -20,10 +22,8 @@ namespace AzureDevOpsTools.Presentation.Services
                 ILogger<ApplicationContextService> logger)
             : base(logger)
         {
-            applicationSettings = appSettings.Value;
-            userPreferences = userPrefs.Value;
-
-            userPreferences.UserPreferences.DefaultOrganization = "foobar";
+            applicationSettings = appSettings?.Value;
+            userPreferences = userPrefs?.Value;
         }
 
         public ApplicationSettings ApplicationSettings => applicationSettings;
