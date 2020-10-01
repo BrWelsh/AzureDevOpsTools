@@ -87,11 +87,8 @@ namespace AzureDevOpsTools.Presentation
         private static IHost ConfigureHost()
         {
             return Host.CreateDefaultBuilder()
-                .ConfigureServices((context, services) =>
-                {
-                    ConfigureServices(context.Configuration, services);
-                })
-                .ConfigureLogging((context, configLogging) =>
+                .ConfigureServices((context, services) => ConfigureServices(context.Configuration, services))
+                .ConfigureLogging((_, configLogging) =>
                 {
                     configLogging.AddConsole();
                     configLogging.AddDebug();
@@ -105,10 +102,7 @@ namespace AzureDevOpsTools.Presentation
                     appConfig.AddEnvironmentVariables();
                     appConfig.AddCommandLine(Environment.GetCommandLineArgs());
                 })
-                .ConfigureHostConfiguration((builder) =>
-                {
-                    builder.AddCommandLine(Environment.GetCommandLineArgs());
-                })
+                .ConfigureHostConfiguration((builder) => builder.AddCommandLine(Environment.GetCommandLineArgs()))
                 .Build();
         }
 

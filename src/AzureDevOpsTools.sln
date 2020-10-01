@@ -7,9 +7,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F1941539-AFC4-493F-9BD6-2C88D5A1ECC0}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		..\build\AllRulesEnabled.ruleset = ..\build\AllRulesEnabled.ruleset
 		back.editorconfig = back.editorconfig
 		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Application", "AzureDevOpsTools.Application\AzureDevOpsTools.Application.csproj", "{5F6D41D6-AEC0-4CFC-A338-5C90CC69EE1D}"
@@ -36,7 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Extensions.Tests", "AzureDevOpsTools.Extensions.Tests\AzureDevOpsTools.Extensions.Tests.csproj", "{A68FCDAC-8C5E-48F1-BDBD-E73E6327F2D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevOpsTools.UnitTest.Framework", "AzureDevOpsTools.UnitTest.Framework\AzureDevOpsTools.UnitTest.Framework.csproj", "{53542C9A-DA37-4E51-8C49-AD7187C10CF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.UnitTest.Framework", "AzureDevOpsTools.UnitTest.Framework\AzureDevOpsTools.UnitTest.Framework.csproj", "{53542C9A-DA37-4E51-8C49-AD7187C10CF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

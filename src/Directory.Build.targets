@@ -1,5 +1,15 @@
 ﻿<Project>
   <PropertyGroup>
-    <Copyright>(c) 2020, Brian Welsh, welshnson.com</Copyright>
+    <Authors>Brian Welsh, welshnson.com</Authors>
+    <Company>Brian Welsh, welshnson.com</Company>
+    <Product>welshnson.com Azure DevOps Tools</Product>
+    <Description>Azure DevOps tools on the desktop</Description>
+    <Version>0.0.9-alpha.1</Version>
+    <InformationalVersion>0.0.9-alpha.1</InformationalVersion>
+    <Copyright>©2020, Brian Welsh, welshnson.com</Copyright>    
+    <PackageProjectUrl>https://github.com/users/BrWelsh/projects/1</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/BrWelsh/AzureDevOpsTools</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+
   </PropertyGroup>
 </Project>
