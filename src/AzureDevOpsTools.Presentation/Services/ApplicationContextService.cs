@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
+
 using AzureDevOpsTools.Model.Settings;
 using AzureDevOpsTools.Service;
+
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 

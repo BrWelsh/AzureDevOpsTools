@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+
 using AzureDevOpsTools.Internal;
 
 namespace AzureDevOpsTools.Extensions

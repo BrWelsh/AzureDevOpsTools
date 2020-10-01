@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+
 using Microsoft.Extensions.Logging;
+
 using ReactiveUI;
 
 namespace AzureDevOpsTools.Framework.ViewModels
@@ -33,8 +35,7 @@ namespace AzureDevOpsTools.Framework.ViewModels
             IsReady = false;
             try
             {
-                Task task = DoInitializeAsync(parameter);
-                await task.ConfigureAwait(false);
+                await DoInitializeAsync(parameter);
             }
             finally
             {
@@ -48,7 +49,10 @@ namespace AzureDevOpsTools.Framework.ViewModels
         {
             // TODO: remove magic strings
             Logger.LogError("Override of DoInitializeAsync() is required");
+
+#pragma warning disable RCS1079 // Throwing of new NotImplementedException.
             throw new NotImplementedException("Override of DoInitialiseAsync must implemented.");
+#pragma warning restore RCS1079 // Throwing of new NotImplementedException.
         }
     }
 }

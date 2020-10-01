@@ -15,12 +15,13 @@
     <Company>Brian Welsh, welshnson.com</Company>
     <Product>welshnson.com Azure DevOps Tools</Product>
     <Description>Azure DevOps tools on the desktop</Description>
-    <Copyright>©2020, Brian Welsh, welshnson.com</Copyright>
+    <!--<Copyright>©2020, Brian Welsh, welshnson.com</Copyright>-->
     <PackageProjectUrl>https://github.com/users/BrWelsh/projects/1</PackageProjectUrl>
     <RepositoryType>github</RepositoryType>
     <RepositoryUrl>https://github.com/BrWelsh/AzureDevOpsTools</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <NeutralLanguage>en-US</NeutralLanguage>
+    <UserSecretsId>43c81fe3-af44-4562-804a-6210d3298fc7</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -53,10 +54,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0-rc.1.20451.14" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-rc.1.20451.14" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />

@@ -1,5 +1,6 @@
 using AzureDevOpsTools.Model.Settings;
 using AzureDevOpsTools.UnitTest.Framework;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AzureDevOpsTools.Model.Tests

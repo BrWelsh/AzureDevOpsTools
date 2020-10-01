@@ -1,9 +1,11 @@
 using System;
 using System.IO;
 using System.Reflection;
+
 using AzureDevOpsTools.Model.Settings;
 using AzureDevOpsTools.Presentation.Services;
 using AzureDevOpsTools.UnitTest.Framework;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

@@ -7,7 +7,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F1941539-AFC4-493F-9BD6-2C88D5A1ECC0}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		..\build\AllRulesEnabled.ruleset = ..\build\AllRulesEnabled.ruleset
 		back.editorconfig = back.editorconfig
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Application", "AzureDevOpsTools.Application\AzureDevOpsTools.Application.csproj", "{5F6D41D6-AEC0-4CFC-A338-5C90CC69EE1D}"

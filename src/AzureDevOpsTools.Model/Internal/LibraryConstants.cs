@@ -1,5 +1,6 @@
 namespace AzureDevOpsTools.Internal
 {
+#pragma warning disable CA1812
     internal static class LibraryConstants
     {
         static LibraryConstants()
@@ -7,4 +8,5 @@ namespace AzureDevOpsTools.Internal
 
         }
     }
+#pragma warning restore CA1812
 }

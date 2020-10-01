@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
+
 using AzureDevOpsTools.Framework.ViewModels;
 using AzureDevOpsTools.Presentation.Services;
+
 using Microsoft.Extensions.Logging;
 
 namespace AzureDevOpsTools.Presentation.ViewModels

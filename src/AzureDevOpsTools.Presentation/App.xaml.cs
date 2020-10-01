@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime;
 using System.Windows;
 using System.Windows.Threading;
+
 using AzureDevOpsTools.Model.Settings;
 using AzureDevOpsTools.Presentation.Extensions;
 using AzureDevOpsTools.Presentation.Internal;
@@ -61,12 +62,11 @@ namespace AzureDevOpsTools.Presentation
             MainWindow = host.Services.GetRequiredService<MainWindow>();
             IMainViewModel vm = host.Services.GetRequiredService<IMainViewModel>();
 
-            await vm.InitializeAsync(null).ConfigureAwait(false);
+            await vm.InitializeAsync(null);
 
             MainWindow.DataContext = vm;
 
             MainWindow.Show();
-
 
             base.OnStartup(e);
 
@@ -75,15 +75,14 @@ namespace AzureDevOpsTools.Presentation
 
         protected override async void OnExit(ExitEventArgs e)
         {
-            await host.Services.GetService<IApplicationContextService>().Save().ConfigureAwait(false);
+            await host.Services.GetService<IApplicationContextService>().Save();
 
             using (host)
             {
-                await host.StopAsync().ConfigureAwait(false);
+                await host.StopAsync();
             }
             base.OnExit(e);
         }
-
 
         private static IHost ConfigureHost()
         {
@@ -111,7 +110,6 @@ namespace AzureDevOpsTools.Presentation
                     builder.AddCommandLine(Environment.GetCommandLineArgs());
                 })
                 .Build();
-
         }
 
         private static void ConfigureServices(IConfiguration configuration, IServiceCollection services)

@@ -348,3 +348,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# output and TestResults
+.output/
+[Tt]est[Rr]esults/

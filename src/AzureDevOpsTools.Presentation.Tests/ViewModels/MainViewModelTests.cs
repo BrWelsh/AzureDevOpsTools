@@ -1,4 +1,5 @@
 ﻿using AzureDevOpsTools.UnitTest.Framework;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AzureDevOpsTools.Presentation.ViewModels.Tests
