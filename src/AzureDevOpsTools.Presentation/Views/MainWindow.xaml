@@ -9,15 +9,17 @@
     <Window.Resources>
 
     </Window.Resources>
-    <DockPanel LastChildFill="True">
-        <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem Content="StatusBarItem" Margin="3,0,0,0" />
-        </StatusBar>
+    <Grid>
         <DockPanel LastChildFill="True">
-            <ContentPresenter DockPanel.Dock="Left" />
-            <!-- Control Center -->
-            <Button Width="30" Height="30" Background="{StaticResource Settings_Inverse_16x}"/>
-            <ContentPresenter />
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem Content="StatusBarItem" Margin="3,0,0,0" />
+            </StatusBar>
+            <DockPanel LastChildFill="True">
+                <ContentPresenter DockPanel.Dock="Left" />
+                <!-- Control Center -->
+                <Button Width="30" Height="30" Background="{StaticResource Settings_Inverse_16x}" Command="{Binding AboutDialogCommand}" />
+                <ContentPresenter />
+            </DockPanel>
         </DockPanel>
-    </DockPanel>
+    </Grid>
 </Window>

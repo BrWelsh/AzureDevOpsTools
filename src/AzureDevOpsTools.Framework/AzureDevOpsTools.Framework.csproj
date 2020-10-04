@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>AzureDevOpsTools</RootNamespace>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -23,10 +24,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0-rc.1.20451.14" />
     <PackageReference Include="ReactiveUI" Version="11.5.35" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Framework\Windows\" />
   </ItemGroup>
 
 

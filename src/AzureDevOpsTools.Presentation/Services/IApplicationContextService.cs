@@ -11,6 +11,6 @@ namespace AzureDevOpsTools.Presentation.Services
 
         UserPreferences UserPreferences { get; }
 
-        Task Save();
+        void Save();
     }
 }

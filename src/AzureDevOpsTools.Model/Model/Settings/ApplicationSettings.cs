@@ -40,7 +40,7 @@ namespace AzureDevOpsTools.Model.Settings
         public LogLevel LogLevel { get; set; }
     }
 
-    public class AppSettingsRoot
+    public class ApplicationSettingsRoot
     {
         [JsonProperty("applicationSettings")]
         public ApplicationSettings ApplicationSettings { get; set; }

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>AzureDevOpsTools</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Directory.Build.targets" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AppInsights.WindowsDesktop" Version="2.13.1" />
+    <PackageReference Include="System.Reflection.Metadata" Version="5.0.0-rc.1.20451.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Diagnostics\" />
+  </ItemGroup>
+  
+</Project>

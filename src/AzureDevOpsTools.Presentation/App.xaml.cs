@@ -1,10 +1,11 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Runtime;
 using System.Windows;
 using System.Windows.Threading;
-
+using AzureDevOpsTools.Framework.Windows;
 using AzureDevOpsTools.Model.Settings;
 using AzureDevOpsTools.Presentation.Extensions;
 using AzureDevOpsTools.Presentation.Internal;
@@ -12,7 +13,7 @@ using AzureDevOpsTools.Presentation.Services;
 using AzureDevOpsTools.Presentation.Utility;
 using AzureDevOpsTools.Presentation.ViewModels;
 using AzureDevOpsTools.Presentation.Views;
-
+using AzureDevOpsTools.Presentation.Views.Dialogs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -43,8 +44,6 @@ namespace AzureDevOpsTools.Presentation
             ProfileOptimization.SetProfileRoot(profileRoot);
             ProfileOptimization.StartProfile("Startup.profile");
 
-            Directory.CreateDirectory(ApplicationInfo.UserProfilePath);
-
             host = App.ConfigureHost();
         }
 
@@ -58,7 +57,6 @@ namespace AzureDevOpsTools.Presentation
             DispatcherUnhandledException += AppDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += AppDomainUnhandledException;
 #endif
-
             MainWindow = host.Services.GetRequiredService<MainWindow>();
             IMainViewModel vm = host.Services.GetRequiredService<IMainViewModel>();
 
@@ -67,7 +65,7 @@ namespace AzureDevOpsTools.Presentation
             MainWindow.DataContext = vm;
 
             MainWindow.Show();
-
+            
             base.OnStartup(e);
 
             splashScreen.Close();
@@ -75,7 +73,7 @@ namespace AzureDevOpsTools.Presentation
 
         protected override async void OnExit(ExitEventArgs e)
         {
-            await host.Services.GetService<IApplicationContextService>().Save();
+            host.Services.GetRequiredService<IApplicationContextService>().Save();
 
             using (host)
             {
@@ -98,7 +96,7 @@ namespace AzureDevOpsTools.Presentation
                     // appConfig.SetBasePath(P);
                     appConfig.AddJsonFile("appSettings.json", optional: false);
                     appConfig.AddJsonFile($"appSettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true);
-                    appConfig.AddJsonFile("userPreferences.json", optional: false);
+                    appConfig.AddJsonFile(ApplicationConstants.UserPreferencesFileName, optional: true);
                     appConfig.AddEnvironmentVariables();
                     appConfig.AddCommandLine(Environment.GetCommandLineArgs());
                 })
@@ -111,9 +109,11 @@ namespace AzureDevOpsTools.Presentation
             services
                 .Configure<ApplicationSettings>(configuration.GetSection(nameof(ApplicationSettings)))
                 .Configure<UserPreferences>(configuration.GetSection(nameof(UserPreferences)))
+                .AddSingleton<MainWindow>()
+                .AddTransient<AboutDialog>()
+                .AddTransient<IAboutApplicaitonViewModel, AboutApplicaitonViewModel>()
                 .AddSingleton<IApplicationContextService, ApplicationContextService>()
-                .AddTransient<IMainViewModel, MainViewModel>()
-                .AddSingleton<MainWindow>();
+                .AddSingleton<IMainViewModel, MainViewModel>();
 
             //.AddSingleton<IAzdoAuthenticationService, AzdoPatAuthenticationService>()
             //.AddSingleton<IUserContextService, UserContextService>()
@@ -144,6 +144,18 @@ namespace AzureDevOpsTools.Presentation
                 MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Presentation.Properties.Resources.UnknownError, e),
                     ApplicationInfo.ProductName, MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            // DiagnosticsClient.TrackEvent("AppStart", new Dictionary<string, string> { { "launchType", e.Args.Length > 0 ? "fileAssociation" : "shortcut" } });
+            // DiagnosticsClient.TrackEvent("AppStart");
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            //DiagnosticsClient.TrackEvent("AppExit");
+            //DiagnosticsClient.OnExit();
         }
     }
 #pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

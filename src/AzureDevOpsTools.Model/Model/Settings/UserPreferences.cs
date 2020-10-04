@@ -29,6 +29,9 @@ namespace AzureDevOpsTools.Model.Settings
 
         [JsonProperty("defaultOrganization")]
         public string DefaultOrganization { get; set; }
+
+        [JsonProperty("windowPlacement")]
+        public string WindowPlacement { get; set; }
     }
 
     public class UserPreferencesRoot

@@ -1,10 +1,11 @@
 namespace AzureDevOpsTools.Presentation.Internal
 {
-    internal class ApplicationConstants
+    internal static class ApplicationConstants
     {
-        private ApplicationConstants() { }
+        static ApplicationConstants() { }
 
         public const int SplashScreenFadeTicks = 300;
         public const string SplashScreenImageResourcePath = "/Resources/Images/splashscreen.png";
+        public const string UserPreferencesFileName = "userPreferences.json";
     }
 }

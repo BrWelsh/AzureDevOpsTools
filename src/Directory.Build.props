@@ -1,16 +1,56 @@
 ﻿<Project>
 
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>    
+  </PropertyGroup>
+
+    <Choose>
+      <When Condition=" '$(Configuration)'=='Debug' ">
+          <PropertyGroup>
+              <DebugSymbols>true</DebugSymbols>
+              <DebugType>full</DebugType>
+              <Optimize>false</Optimize>
+              <!--<OutputPath>.\bin\Debug\</OutputPath>-->
+              <DefineConstants>DEBUG;TRACE</DefineConstants>
+          </PropertyGroup>
+      </When>
+      <When Condition=" '$(Configuration)'=='Release' ">
+          <PropertyGroup>
+              <DebugSymbols>false</DebugSymbols>
+              <Optimize>true</Optimize>
+              <!--<OutputPath>.\bin\Release\</OutputPath>-->
+              <DefineConstants>TRACE</DefineConstants>
+          </PropertyGroup>
+      </When>
+  </Choose>
+
+  <PropertyGroup>    
+    <ProjectDirectory>$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine($(SolutionDir), "../"))))</ProjectDirectory>
+    <ProjectBuildDirectory>$([System.IO.Path]::Combine($(ProjectDirectory), "build"))</ProjectBuildDirectory>
+    <ProjectDocsDirectory>$([System.IO.Path]::Combine($(ProjectDirectory), "docs"))</ProjectDocsDirectory>
+    <SolutionDir>$([System.IO.Path]::Combine($(ProjectDirectory), "src"))</SolutionDir>
+  </PropertyGroup>
 
   <PropertyGroup>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors Condition=" '$(Configuration)' == 'Release' ">true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors Condition=" '$(Configuration)' == 'Debug' ">false</TreatWarningsAsErrors>
     <nowarn>CS1998,3024</nowarn>
     <CaRulesetName>AllRulesEnabled</CaRulesetName>
   </PropertyGroup>
+
+  <!--<PropertyGroup Condition=" '$(Confuguration)' != 'Debug' ">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>$([System.IO.Path]::Combine($(ProjectBuildDirectory), "AzureDevOpsTool.snk"))</AssemblyOriginatorKeyFile>    
+  </PropertyGroup>-->
+
   
 
   <PropertyGroup>
     <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
-    <CodeAnalysisRuleSet>..\build\Microsoft.CodeAnalysis.FxCopAnalyzers\rulesets\$(CaRulesetName).ruleset</CodeAnalysisRuleSet>
+    <AnalizerPath>$([System.IO.Path]::Combine($(ProjectBuildDirectory), "Microsoft.CodeAnalysis.FxCopAnalyzers"))</AnalizerPath>
+    <RulesetsPath>$([System.IO.Path]::Combine($(AnalizerPath), "rulesets"))</RulesetsPath>
+    <CodeAnalysisRuleSet>$([System.IO.Path]::Combine($(RulesetsPath), "$(CaRulesetName).ruleset"))</CodeAnalysisRuleSet>  
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +61,7 @@
     <PackageReference Include="Roslynator.Analyzers" Version="3.0.0" />
     <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.0.0" />
     <PackageReference Include="Roslynator.CSharp" Version="1.0.0" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.33-rc" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>

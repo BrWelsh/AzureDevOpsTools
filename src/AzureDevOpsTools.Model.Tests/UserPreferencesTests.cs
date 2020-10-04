@@ -10,7 +10,6 @@ namespace AzureDevOpsTools.Model.Tests
     {
         private UserPreferencesRoot preferencesRoot;
 
-
         [TestInitialize]
         public override void Initialize()
         {

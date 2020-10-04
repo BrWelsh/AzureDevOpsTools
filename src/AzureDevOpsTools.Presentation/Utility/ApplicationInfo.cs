@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Reflection;
+using AzureDevOpsTools.Presentation.Internal;
 
 namespace AzureDevOpsTools.Presentation.Utility
 {
@@ -85,7 +86,7 @@ namespace AzureDevOpsTools.Presentation.Utility
 
         private static string GetUserProfilePath()
         {
-            return Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".config"), ApplicationInfo.ProductName);
+            return Path.Combine(ApplicationInfo.ApplicationPath, ApplicationConstants.UserPreferencesFileName);
         }
 
         private static string GetAppDataPath()
