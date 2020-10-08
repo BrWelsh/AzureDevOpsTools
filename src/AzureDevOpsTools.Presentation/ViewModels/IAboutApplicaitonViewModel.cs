@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Windows.Input;
 using AzureDevOpsTools.Framework.ViewModels;
 
 namespace AzureDevOpsTools.Presentation.ViewModels
 {
-    interface IAboutApplicaitonViewModel : IViewModel
+    internal interface IAboutApplicaitonViewModel : IViewModel
     {
         string Title { get; }
+
+        ICommand NavigateUrlCommand { get; }
     }
 }

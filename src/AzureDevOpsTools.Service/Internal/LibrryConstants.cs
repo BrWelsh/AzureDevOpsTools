@@ -6,7 +6,6 @@ namespace AzureDevOpsTools.Internal
     {
         static LibrryConstants()
         {
-
         }
     }
 #pragma warning restore CA1812

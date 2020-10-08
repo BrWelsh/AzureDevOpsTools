@@ -62,7 +62,7 @@ namespace AzureDevOpsTools.Presentation.Views
 
         private void SaveSettings()
         {
-           userPreferences.WindowPlacement = this.SaveWindowPlacementToSettings();
+            userPreferences.WindowPlacement = this.SaveWindowPlacementToSettings();
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)

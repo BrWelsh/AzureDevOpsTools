@@ -1,11 +1,10 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Runtime;
 using System.Windows;
 using System.Windows.Threading;
-using AzureDevOpsTools.Framework.Windows;
+
 using AzureDevOpsTools.Model.Settings;
 using AzureDevOpsTools.Presentation.Extensions;
 using AzureDevOpsTools.Presentation.Internal;
@@ -14,6 +13,7 @@ using AzureDevOpsTools.Presentation.Utility;
 using AzureDevOpsTools.Presentation.ViewModels;
 using AzureDevOpsTools.Presentation.Views;
 using AzureDevOpsTools.Presentation.Views.Dialogs;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -51,7 +51,8 @@ namespace AzureDevOpsTools.Presentation
         {
             SplashScreen splashScreen
                 = new SplashScreen(ApplicationConstants.SplashScreenImageResourcePath);
-            splashScreen.Show();
+            // splashScreen.Show();
+            splashScreen.Show(false, false);
 
 #if (!DEBUG)
             DispatcherUnhandledException += AppDispatcherUnhandledException;
@@ -65,7 +66,7 @@ namespace AzureDevOpsTools.Presentation
             MainWindow.DataContext = vm;
 
             MainWindow.Show();
-            
+
             base.OnStartup(e);
 
             splashScreen.Close();
@@ -109,7 +110,7 @@ namespace AzureDevOpsTools.Presentation
             services
                 .Configure<ApplicationSettings>(configuration.GetSection(nameof(ApplicationSettings)))
                 .Configure<UserPreferences>(configuration.GetSection(nameof(UserPreferences)))
-                .AddSingleton<MainWindow>()
+                .AddTransient<MainWindow>()
                 .AddTransient<AboutDialog>()
                 .AddTransient<IAboutApplicaitonViewModel, AboutApplicaitonViewModel>()
                 .AddSingleton<IApplicationContextService, ApplicationContextService>()
@@ -144,18 +145,6 @@ namespace AzureDevOpsTools.Presentation
                 MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Presentation.Properties.Resources.UnknownError, e),
                     ApplicationInfo.ProductName, MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        private void Application_Startup(object sender, StartupEventArgs e)
-        {
-            // DiagnosticsClient.TrackEvent("AppStart", new Dictionary<string, string> { { "launchType", e.Args.Length > 0 ? "fileAssociation" : "shortcut" } });
-            // DiagnosticsClient.TrackEvent("AppStart");
-        }
-
-        private void Application_Exit(object sender, ExitEventArgs e)
-        {
-            //DiagnosticsClient.TrackEvent("AppExit");
-            //DiagnosticsClient.OnExit();
         }
     }
 #pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

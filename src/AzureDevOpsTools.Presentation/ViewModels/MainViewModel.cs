@@ -1,19 +1,22 @@
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+
 using AzureDevOpsTools.Framework.ViewModels;
 using AzureDevOpsTools.Presentation.Services;
 using AzureDevOpsTools.Presentation.Views.Dialogs;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+
 using ReactiveUI;
 
 namespace AzureDevOpsTools.Presentation.ViewModels
 {
-    public class MainViewModel : ViewModelBase, IMainViewModel
+    internal class MainViewModel : ViewModelBase, IMainViewModel
     {
 #pragma warning disable IDE0052 // Remove unread private members
 

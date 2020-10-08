@@ -1,5 +1,6 @@
 ﻿<Project>
 
+  
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>    
   </PropertyGroup>
@@ -25,7 +26,7 @@
   </Choose>
 
   <PropertyGroup>    
-    <ProjectDirectory>$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine($(SolutionDir), "../"))))</ProjectDirectory>
+    <ProjectDirectory>$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine($(MSBuildThisFileDirectory), "../"))))</ProjectDirectory>
     <ProjectBuildDirectory>$([System.IO.Path]::Combine($(ProjectDirectory), "build"))</ProjectBuildDirectory>
     <ProjectDocsDirectory>$([System.IO.Path]::Combine($(ProjectDirectory), "docs"))</ProjectDocsDirectory>
     <SolutionDir>$([System.IO.Path]::Combine($(ProjectDirectory), "src"))</SolutionDir>
@@ -34,20 +35,12 @@
   <PropertyGroup>
     <TreatWarningsAsErrors Condition=" '$(Configuration)' == 'Release' ">true</TreatWarningsAsErrors>
     <TreatWarningsAsErrors Condition=" '$(Configuration)' == 'Debug' ">false</TreatWarningsAsErrors>
-    <nowarn>CS1998,3024</nowarn>
+    <NoWarn>CS1998,3024</NoWarn>
     <CaRulesetName>AllRulesEnabled</CaRulesetName>
   </PropertyGroup>
 
-  <!--<PropertyGroup Condition=" '$(Confuguration)' != 'Debug' ">
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>false</DelaySign>
-    <AssemblyOriginatorKeyFile>$([System.IO.Path]::Combine($(ProjectBuildDirectory), "AzureDevOpsTool.snk"))</AssemblyOriginatorKeyFile>    
-  </PropertyGroup>-->
-
-  
-
   <PropertyGroup>
-    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+    <CodeAnalysisTreatWarningsAsErrors>$(TreatWarningsAsErrors)</CodeAnalysisTreatWarningsAsErrors>
     <AnalizerPath>$([System.IO.Path]::Combine($(ProjectBuildDirectory), "Microsoft.CodeAnalysis.FxCopAnalyzers"))</AnalizerPath>
     <RulesetsPath>$([System.IO.Path]::Combine($(AnalizerPath), "rulesets"))</RulesetsPath>
     <CodeAnalysisRuleSet>$([System.IO.Path]::Combine($(RulesetsPath), "$(CaRulesetName).ruleset"))</CodeAnalysisRuleSet>  
@@ -58,10 +51,19 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Roslynator.Analyzers" Version="3.0.0" />
-    <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.0.0" />
-    <PackageReference Include="Roslynator.CSharp" Version="1.0.0" />
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.33-rc" PrivateAssets="all" />
+    <PackageReference Include="Roslynator.Analyzers" Version="3.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Roslynator.CSharp" Version="1.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 
 using AzureDevOpsTools.Model.Settings;
 using AzureDevOpsTools.Service;

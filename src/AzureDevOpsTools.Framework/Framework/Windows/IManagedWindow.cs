@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AzureDevOpsTools.Framework.Windows
+﻿namespace AzureDevOpsTools.Framework.Windows
 {
     public interface IManagedWindow
     {

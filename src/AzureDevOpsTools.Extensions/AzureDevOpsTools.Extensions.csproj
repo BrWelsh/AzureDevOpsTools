@@ -7,17 +7,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>0.0.9-alpha.1</Version>
-    <InformationalVersion>0.0.9-alpha.1</InformationalVersion>
-    <Authors>Brian Welsh, welshnson.com</Authors>
-    <Company>Brian Welsh, welshnson.com</Company>
-    <Product>welshnson.com Azure DevOps Tools</Product>
     <Description>Azure DevOps tools on the desktop</Description>
-    <Copyright>©2020, Brian Welsh, welshnson.com</Copyright>
-    <PackageProjectUrl>https://github.com/users/BrWelsh/projects/1</PackageProjectUrl>
-    <RepositoryType>github</RepositoryType>
-    <RepositoryUrl>https://github.com/BrWelsh/AzureDevOpsTools</RepositoryUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 

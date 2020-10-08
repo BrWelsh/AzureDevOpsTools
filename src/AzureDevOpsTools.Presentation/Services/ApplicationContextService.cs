@@ -1,5 +1,4 @@
 using System.Text.Json;
-using System.Threading.Tasks;
 
 using AzureDevOpsTools.Model.Settings;
 using AzureDevOpsTools.Presentation.Utility;

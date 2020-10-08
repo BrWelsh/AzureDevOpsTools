@@ -4,7 +4,7 @@
     <Company>Brian Welsh, welshnson.com</Company>
     <Product>welshnson.com Azure DevOps Tools</Product>
     <Description>Azure DevOps tools on the desktop</Description>
-    <Version>0.0.9-alpha.1</Version>
+    <Version>0.0.9.1</Version>
     <InformationalVersion>0.0.9-alpha.1</InformationalVersion>
     <Copyright>©2020, Brian Welsh, welshnson.com</Copyright>    
     <PackageProjectUrl>https://github.com/users/BrWelsh/projects/1</PackageProjectUrl>
@@ -14,6 +14,7 @@
 
   <Target Name="AddCommitHashToAssemblyAttributes" BeforeTargets="GetAssemblyAttributes">
     <ItemGroup>
+      
       <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition=" '$(SourceRevisionId)' != '' ">
         <_Parameter1>CommitHash</_Parameter1>
         <_Parameter2>$(SourceRevisionId)</_Parameter2>
@@ -23,11 +24,28 @@
         <_Parameter1>CloudBuildNumber</_Parameter1>
         <_Parameter2>$(BuildVersionSimple)</_Parameter2>
       </AssemblyAttribute>
+
       <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition=" '$(PublicRelease)' == 'false' ">
         <_Parameter1>CloudBuildNumber</_Parameter1>
         <_Parameter2>$(BuildVersionSimple)$(SemVerBuildSuffix)</_Parameter2>
       </AssemblyAttribute>
     </ItemGroup>
+
+    <ItemGroup>
+      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition=" '$(PublicRelease)' == 'false' ">
+        <_Parameter1>RepositoryUrl</_Parameter1>
+        <_Parameter2>$(RepositoryUrl)</_Parameter2>
+      </AssemblyAttribute>
+
+      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition=" '$(PublicRelease)' == 'false' ">
+        <_Parameter1>ProjectUrl</_Parameter1>
+        <_Parameter2>$(PackageProjectUrl)</_Parameter2>
+      </AssemblyAttribute>
+      
+    </ItemGroup>
+    
+    
+
   </Target>
   
 </Project>

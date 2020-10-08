@@ -10,17 +10,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>0.0.9-alpha.1</Version>
-    <InformationalVersion>0.0.9-alpha.1</InformationalVersion>
-    <Authors>Brian Welsh, welshnson.com</Authors>
-    <Company>Brian Welsh, welshnson.com</Company>
-    <Product>welshnson.com Azure DevOps Tools</Product>
     <Description>Azure DevOps tools on the desktop</Description>
-    <!--<Copyright>©2020, Brian Welsh, welshnson.com</Copyright>-->
-    <PackageProjectUrl>https://github.com/users/BrWelsh/projects/1</PackageProjectUrl>
-    <RepositoryType>github</RepositoryType>
-    <RepositoryUrl>https://github.com/BrWelsh/AzureDevOpsTools</RepositoryUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <NeutralLanguage>en-US</NeutralLanguage>
     <UserSecretsId>43c81fe3-af44-4562-804a-6210d3298fc7</UserSecretsId>
   </PropertyGroup>
@@ -28,6 +18,7 @@
   <ItemGroup>
     <None Remove="appSettings.Development.json" />
     <None Remove="appSettings.json" />
+    <None Remove="Resources\Images\about-header.png" />
     <None Remove="Resources\Images\splashscreen.png" />
     <None Remove="userPreferences.json" />
     <None Include="..\..\LICENSE">
@@ -55,7 +46,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="AppInsights.WindowsDesktop" Version="2.13.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0-rc.1.20451.14" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-rc.1.20451.14" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
@@ -69,6 +59,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Resource Include="Resources\Images\about-header.png" />
     <Resource Include="Resources\Images\splashscreen.png" />
   </ItemGroup>
 

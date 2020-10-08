@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid />
+    <RootNamespace />
+    <AssemblyName />
+    <OutputPath>b</OutputPath>
+    <IntermediateOutputPath>o</IntermediateOutputPath>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+
+    <NoWarn>1587;1591</NoWarn>
+
+    <AssemblyInfo>
+        <AssemblyVersion>1.2.3</AssemblyVersion>
+    </AssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

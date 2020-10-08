@@ -48,5 +48,4 @@ namespace AzureDevOpsTools.Model.Settings
         [JsonProperty("Logging")]
         public Logging Logging { get; set; }
     }
-
 }

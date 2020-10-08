@@ -5,7 +5,6 @@ namespace AzureDevOpsTools.Internal
     {
         static LibraryConstants()
         {
-
         }
     }
 #pragma warning restore CA1812

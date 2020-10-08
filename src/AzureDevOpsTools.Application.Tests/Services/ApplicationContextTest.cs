@@ -30,12 +30,12 @@ namespace AzureDevOpsTools.Application.Tests.Services
                     services.Configure<UserPreferences>(context.Configuration.GetSection(nameof(UserPreferences)));
                     services.AddSingleton<IApplicationContextService, ApplicationContextService>();
                 })
-                .ConfigureLogging((context, configLogging) =>
+                .ConfigureLogging((_, configLogging) =>
                 {
                     configLogging.AddConsole();
                     configLogging.AddDebug();
                 })
-                .ConfigureAppConfiguration((context, appConfig) =>
+                .ConfigureAppConfiguration((_, appConfig) =>
                 {
                     string path = Path.GetDirectoryName(Assembly.GetAssembly(typeof(ApplicationContextTest)).Location);
 
@@ -45,14 +45,10 @@ namespace AzureDevOpsTools.Application.Tests.Services
                     appConfig.AddEnvironmentVariables();
                     appConfig.AddCommandLine(Environment.GetCommandLineArgs());
                 })
-                .ConfigureHostConfiguration((builder) =>
-                {
-                    builder.AddCommandLine(Environment.GetCommandLineArgs());
-                })
+                .ConfigureHostConfiguration((builder) => builder.AddCommandLine(Environment.GetCommandLineArgs()))
                 .Build();
 
             applicationContextService = host.Services.GetRequiredService<IApplicationContextService>();
-
         }
 
         [TestMethod]
@@ -89,10 +85,7 @@ namespace AzureDevOpsTools.Application.Tests.Services
             Assert.IsNotNull(applicationContextService.UserPreferences.PersonalAccessToken);
             Assert.AreNotEqual(string.Empty, applicationContextService.UserPreferences.PersonalAccessToken.Name);
             Assert.AreNotEqual(string.Empty, applicationContextService.UserPreferences.PersonalAccessToken.Value);
-
-
         }
-
 
         [TestCleanup]
         public override void TestCleanup()

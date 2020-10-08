@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Interop;
+
 using AzureDevOpsTools.Interop;
 
 namespace AzureDevOpsTools.Framework.Windows.Dialogs
@@ -25,7 +23,7 @@ namespace AzureDevOpsTools.Framework.Windows.Dialogs
 
             //Call Initialize Component via Reflection, so you do not need 
             //to call InitializeComponent() every time in your base class
-            this.GetType()
+            GetType()
                 .GetMethod("InitializeComponent",
                     System.Reflection.BindingFlags.Public |
                     System.Reflection.BindingFlags.NonPublic |
@@ -33,9 +31,7 @@ namespace AzureDevOpsTools.Framework.Windows.Dialogs
                 .Invoke(this, null);
 
             //Set runtime DataContext - Designer mode will not run this code
-            this.DataContext = this;
-
-
+            DataContext = this;
         }
 
         //User-Defined UI Configuration class containing System.Drawing.Color 
@@ -47,7 +43,13 @@ namespace AzureDevOpsTools.Framework.Windows.Dialogs
         //You can skip this if you do not need or did not implement your own ValueConverter
         //public static IValueConverter UniversalValueConverter { get; } = new UniversalValueConverter();
 
+        // Remove unused private members
+        // Add accessibility modifiers.
+        // Remove unused member declaration.       
+#pragma warning disable IDE0051, RCS1018, RCS1213
         void InitializeComponent() { }
+#pragma warning restore RCS1213, RCS1018, IDE0051
+
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
@@ -61,7 +63,6 @@ namespace AzureDevOpsTools.Framework.Windows.Dialogs
             const int SWP_NOZORDER = 0x0004;
             const int SWP_FRAMECHANGED = 0x0020;
 
-
             IntPtr hwnd = new WindowInteropHelper(this).Handle;
 
             int value = NativeMethods.GetWindowLong(hwnd, GWL_STYLE);
@@ -73,7 +74,6 @@ namespace AzureDevOpsTools.Framework.Windows.Dialogs
             // Update the window's non-client area to reflect the changes
             NativeMethods.SetWindowPos(hwnd, IntPtr.Zero, 0, 0, 0, 0,
                                        SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
-
             if (!Debugger.IsAttached)
             {
                 NativeMethods.SendMessage(hwnd, NativeMethods.WM_SETICON, 0, (IntPtr)0);

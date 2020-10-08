@@ -15,7 +15,6 @@ namespace AzureDevOpsTools.Presentation.ViewModels.Tests
         [TestMethod()]
         public void MainViewModelTest()
         {
-
         }
 
         [TestCleanup]

@@ -20,8 +20,8 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\source\repos\github\AzureDevOpsTools\src\AzureDevOpsTools.UnitTest.Framework\AzureDevOpsTools.UnitTest.Framework.csproj" />
     <ProjectReference Include="..\AzureDevOpsTools.Presentation\AzureDevOpsTools.Presentation.csproj" />
-    <ProjectReference Include="..\AzureDevOpsTools.UnitTest.Framework\AzureDevOpsTools.UnitTest.Framework.csproj" />
   </ItemGroup>
 
   <ItemGroup>
