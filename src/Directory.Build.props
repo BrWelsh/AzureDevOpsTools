@@ -1,10 +1,14 @@
 ﻿<Project>
-
   
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>    
   </PropertyGroup>
-
+  
+  <PropertyGroup>
+    <!-- Update this version number to adopt a new version of FxCopAnalyzers -->
+    <FxCopAnalyzersVersion>3.3.0</FxCopAnalyzersVersion>
+  </PropertyGroup>
+  
     <Choose>
       <When Condition=" '$(Configuration)'=='Debug' ">
           <PropertyGroup>
@@ -29,6 +33,7 @@
     <ProjectDirectory>$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine($(MSBuildThisFileDirectory), "../"))))</ProjectDirectory>
     <ProjectBuildDirectory>$([System.IO.Path]::Combine($(ProjectDirectory), "build"))</ProjectBuildDirectory>
     <ProjectDocsDirectory>$([System.IO.Path]::Combine($(ProjectDirectory), "docs"))</ProjectDocsDirectory>
+    <ProjectToolsDirectory>$([System.IO.Path]::Combine($(ProjectDirectory), "tools"))</ProjectToolsDirectory>
     <SolutionDir>$([System.IO.Path]::Combine($(ProjectDirectory), "src"))</SolutionDir>
   </PropertyGroup>
 
@@ -41,13 +46,13 @@
 
   <PropertyGroup>
     <CodeAnalysisTreatWarningsAsErrors>$(TreatWarningsAsErrors)</CodeAnalysisTreatWarningsAsErrors>
-    <AnalizerPath>$([System.IO.Path]::Combine($(ProjectBuildDirectory), "Microsoft.CodeAnalysis.FxCopAnalyzers"))</AnalizerPath>
+    <AnalizerPath>$([System.IO.Path]::Combine($(ProjectToolsDirectory), "Microsoft.CodeAnalysis.FxCopAnalyzers"))</AnalizerPath>
     <RulesetsPath>$([System.IO.Path]::Combine($(AnalizerPath), "rulesets"))</RulesetsPath>
     <CodeAnalysisRuleSet>$([System.IO.Path]::Combine($(RulesetsPath), "$(CaRulesetName).ruleset"))</CodeAnalysisRuleSet>  
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="$(FxCopAnalyzersVersion)">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -65,5 +70,9 @@
     </PackageReference>
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37" PrivateAssets="all" />
   </ItemGroup>
-
+  
+  <ItemGroup Condition="Exists('$(ProjectToolsDirectory)\CommonAssemblyInfo.cs')">
+    <Compile Include="$(ProjectToolsDirectory)\CommonAssemblyInfo.cs" LinkBase="Properties" />
+  </ItemGroup>
+  
 </Project>

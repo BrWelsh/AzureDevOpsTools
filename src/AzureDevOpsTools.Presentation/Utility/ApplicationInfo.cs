@@ -6,6 +6,8 @@ using System.Reflection;
 
 using AzureDevOpsTools.Presentation.Internal;
 
+using Microsoft.VisualBasic.CompilerServices;
+
 namespace AzureDevOpsTools.Presentation.Utility
 {
 #pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
@@ -25,13 +27,9 @@ namespace AzureDevOpsTools.Presentation.Utility
         private static readonly Lazy<string> description = new Lazy<string>(GetDescription);
         private static readonly Lazy<IEnumerable<Assembly>> applicationAssemblies = new Lazy<IEnumerable<Assembly>>(GetApplicationAssemblies);
         private static readonly Lazy<Uri> repositoryUri = new Lazy<Uri>(GetRepositoryUri);
-        private static readonly Lazy<string> repositoryUrl = new Lazy<string>(GetMetaDataValue("RepositoryUrl"));
-        private static readonly Lazy<string> projectUrl = new Lazy<string>(GetMetaDataValue("ProjectUrl"));
+        private static readonly Lazy<Uri> projectUri = new Lazy<Uri>(GetProjectUri);
 
-
-        public static string RepositoryUrl => repositoryUrl.Value;
-
-        public static string ProjectUrl => projectUrl.Value;
+        public static Uri ProjectUri => projectUri.Value;
 
         /// <summary>Gets the Repository Uri</summary>
         public static Uri RepositoryUri => repositoryUri.Value;
@@ -137,9 +135,14 @@ namespace AzureDevOpsTools.Presentation.Utility
             return result.Select(name => Assembly.LoadFrom(name)).ToArray();
         }
 
+        private static Uri GetProjectUri()
+        {
+            return new Uri(GetMetaDataValue(ApplicationConstants.PackageProjectUrlKey));
+        }
+
         private static Uri GetRepositoryUri()
         {
-            return new Uri(ApplicationConstants.RepositoryUrl);
+            return new Uri(GetMetaDataValue(ApplicationConstants.RepositoryUrlKey));
         }
 
         private static string GetApplicationPath()

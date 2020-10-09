@@ -10,7 +10,6 @@ namespace AzureDevOpsTools.Model.Tests
     {
         private ApplicationSettings applicationSettings;
 
-
         [TestInitialize]
         public override void Initialize()
         {
