@@ -28,6 +28,9 @@ namespace AzureDevOpsTools.Presentation.Utility
         private static readonly Lazy<IEnumerable<Assembly>> applicationAssemblies = new Lazy<IEnumerable<Assembly>>(GetApplicationAssemblies);
         private static readonly Lazy<Uri> repositoryUri = new Lazy<Uri>(GetRepositoryUri);
         private static readonly Lazy<Uri> projectUri = new Lazy<Uri>(GetProjectUri);
+        private static readonly Lazy<Uri> projectWebsite = new Lazy<Uri>(GetProjectWebsite);
+
+        public static Uri ProjectWebsite => projectWebsite.Value;
 
         public static Uri ProjectUri => projectUri.Value;
 
@@ -137,12 +140,12 @@ namespace AzureDevOpsTools.Presentation.Utility
 
         private static Uri GetProjectUri()
         {
-            return new Uri(GetMetaDataValue(ApplicationConstants.PackageProjectUrlKey));
+            return new Uri(GetMetaDataValue(ApplicationConstants.PackageProjectUrlKey), UriKind.Absolute);
         }
 
         private static Uri GetRepositoryUri()
         {
-            return new Uri(GetMetaDataValue(ApplicationConstants.RepositoryUrlKey));
+            return new Uri(GetMetaDataValue(ApplicationConstants.RepositoryUrlKey), UriKind.Absolute);
         }
 
         private static string GetApplicationPath()
@@ -185,6 +188,16 @@ namespace AzureDevOpsTools.Presentation.Utility
                 return Array.Find(attribute, x => x.Key.Equals(param, StringComparison.OrdinalIgnoreCase))?.Value ?? string.Empty;
             }
             return string.Empty;
+        }
+
+        private static Uri GetProjectWebsite()
+        {
+            string metadata = GetMetaDataValue(ApplicationConstants.ProjectWebsiteKey);
+            if (string.IsNullOrEmpty(metadata))
+            {
+                metadata = "https://welshnson.github.io/";
+            }
+            return new Uri(metadata, UriKind.Absolute);
         }
     }
 #pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

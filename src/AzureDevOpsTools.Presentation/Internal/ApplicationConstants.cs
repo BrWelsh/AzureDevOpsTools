@@ -9,6 +9,7 @@ namespace AzureDevOpsTools.Presentation.Internal
         public const string UserPreferencesFileName = "userPreferences.json";
 
         public const string PackageProjectUrlKey = "PackageProjectUrl";
-        public const string RepositoryUrlKey = "PackageProjectUrlKey1";
+        public const string RepositoryUrlKey = "RepositoryUrl";
+        public const string ProjectWebsiteKey = "ProjectWebsite";
     }
 }

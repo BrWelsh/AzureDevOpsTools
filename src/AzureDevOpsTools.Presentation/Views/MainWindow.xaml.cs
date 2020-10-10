@@ -4,7 +4,7 @@ using System.Windows;
 
 using AzureDevOpsTools.Interop;
 using AzureDevOpsTools.Model.Settings;
-
+using MahApps.Metro.Controls;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -13,7 +13,7 @@ namespace AzureDevOpsTools.Presentation.Views
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
 #pragma warning disable IDE0032 // Use auto property
 

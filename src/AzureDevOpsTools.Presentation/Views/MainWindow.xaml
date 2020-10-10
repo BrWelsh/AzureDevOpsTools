@@ -1,4 +1,4 @@
-<Window x:Class="AzureDevOpsTools.Presentation.Views.MainWindow"
+<mah:MetroWindow x:Class="AzureDevOpsTools.Presentation.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,9 +6,10 @@
         xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
         Height="650" Width="750" MinWidth="600" MinHeight="600"
         xmlns:local="clr-namespace:AzureDevOpsTools.Presentation.Views"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800"
-        Title="MainWindow">
+        Title="{Binding Title}">
     <Window.Resources>
 
     </Window.Resources>
@@ -20,9 +21,9 @@
             <DockPanel LastChildFill="True">
                 <ContentPresenter DockPanel.Dock="Left" />
                 <!-- Control Center -->
-                <Button Width="30" Height="30" Background="{StaticResource Settings_Inverse_16x}" Command="{Binding AboutDialogCommand}" />
+                <Button DockPanel.Dock="Top" Width="30" Height="30" Background="{StaticResource Settings_Inverse_16x}" Command="{Binding AboutDialogCommand}" />
                 <ContentPresenter />
             </DockPanel>
         </DockPanel>
     </Grid>
-</Window>
+</mah:MetroWindow>

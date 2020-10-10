@@ -38,7 +38,7 @@
       </AssemblyAttribute>
 
       <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition=" '$(PublicRelease)' == 'false' ">
-        <_Parameter1>ProjectUrl</_Parameter1>
+        <_Parameter1>PackageProjectUrl</_Parameter1>
         <_Parameter2>$(PackageProjectUrl)</_Parameter2>
       </AssemblyAttribute>
       

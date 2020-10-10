@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AzureDevOpsTools.Presentation.Views.Dialogs"
         xmlns:base="clr-namespace:AzureDevOpsTools.Framework.Windows.Dialogs;assembly=AzureDevOpsTools.Framework"
-        xmlns:info="clr-namespace:AzureDevOpsTools.Presentation.Utility"
+        xmlns:info="clr-namespace:AzureDevOpsTools.Presentation.Utility"        
         mc:Ignorable="d"
         Title="{Binding Path=Title, StringFormat=About: {0}}" Height="420" Width="680"
         ResizeMode="NoResize"
@@ -15,7 +15,8 @@
         MinHeight="420" MinWidth="680"
         ShowInTaskbar="False"
         x:Name ="dialog">
-    <Grid>
+   
+        <Grid>
         <DockPanel LastChildFill="True">
             <Image DockPanel.Dock="Top" Source="/Resources/Images/about-header.png" Stretch="None" />
             <StackPanel Margin="20,0,20,20">
@@ -24,22 +25,22 @@
 
                 <TextBlock Text="{Binding Source={x:Static info:ApplicationInfo.InformationalVersion}, StringFormat='Version: {0}'}" />
                 <TextBlock>
-                    <Hyperlink NavigateUri="https://welshnson.github.io/" Command="{Binding NavigateUrlCommand}" CommandParameter="{Binding NavigateUri, RelativeSource={RelativeSource Self}}">
-                        <Run Text="https://welshnson.github.io/" />
+                    <Hyperlink NavigateUri="{Binding Path=Website}" Command="{Binding NavigateUrlCommand}" CommandParameter="{Binding NavigateUri, RelativeSource={RelativeSource Self}}">
+                        <Run Text="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Hyperlink}}}" />
                     </Hyperlink>
                 </TextBlock>
                 <TextBlock>
-                    <Hyperlink NavigateUri="https://github.com/users/BrWelsh/projects/1">
-                        <Run Text="https://github.com/users/BrWelsh/projects/1" />
+                    <Hyperlink NavigateUri="{Binding Path=ProjectUri}" Command="{Binding NavigateUrlCommand}" CommandParameter="{Binding NavigateUri, RelativeSource={RelativeSource Self}}">
+                       <TextBlock Text="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Hyperlink}}}"></TextBlock>
                     </Hyperlink>
                 </TextBlock>
                 <TextBlock>
-                    <Hyperlink NavigateUri="https://github.com/BrWelsh/AzureDevOpsTools">
-                        <Run Text="https://github.com/BrWelsh/AzureDevOpsTools" />
+                    <Hyperlink NavigateUri="{Binding Path=RepositoryUri}" Command="{Binding NavigateUrlCommand}" CommandParameter="{Binding NavigateUri, RelativeSource={RelativeSource Self}}">
+                        <Run Text="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Hyperlink}}}" />
                     </Hyperlink>
                 </TextBlock>
                 <TextBlock>
-                    <Run Text="Original Author: " /><Hyperlink NavigateUri="https://github.com/BrWelsh"><Run Text="Brian Welsh" /></Hyperlink>
+                    <Run Text="Original Author: " /><Hyperlink NavigateUri="https://github.com/BrWelsh" Command="{Binding NavigateUrlCommand}" CommandParameter="{Binding NavigateUri, RelativeSource={RelativeSource Self}}"><Run Text="Brian Welsh" /></Hyperlink>
                 </TextBlock>
                 <ListBox DataContext="{x:Static info:ApplicationInfo.ApplicationAssemblies}" Height="100">
                     <ListBox.ItemTemplate>

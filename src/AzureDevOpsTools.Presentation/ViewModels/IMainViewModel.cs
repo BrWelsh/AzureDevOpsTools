@@ -6,6 +6,7 @@ namespace AzureDevOpsTools.Presentation.ViewModels
 {
     internal interface IMainViewModel : IViewModel
     {
+        string Title { get; }
         ICommand AboutDialogCommand { get; }
     }
 }

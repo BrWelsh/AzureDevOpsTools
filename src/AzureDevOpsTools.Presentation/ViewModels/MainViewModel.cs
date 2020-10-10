@@ -6,6 +6,7 @@ using System.Windows.Input;
 
 using AzureDevOpsTools.Framework.ViewModels;
 using AzureDevOpsTools.Presentation.Services;
+using AzureDevOpsTools.Presentation.Utility;
 using AzureDevOpsTools.Presentation.Views.Dialogs;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -47,6 +48,8 @@ namespace AzureDevOpsTools.Presentation.ViewModels
         }
 
         public ICommand AboutDialogCommand { get; }
+
+        public string Title => ApplicationInfo.ProductName;
 
         protected override Task DoInitializeAsync(object parameter)
         {
