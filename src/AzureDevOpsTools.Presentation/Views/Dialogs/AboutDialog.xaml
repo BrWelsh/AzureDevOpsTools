@@ -18,8 +18,13 @@
    
         <Grid>
         <DockPanel LastChildFill="True">
-            <Image DockPanel.Dock="Top" Source="/Resources/Images/about-header.png" Stretch="None" />
+            <Image DockPanel.Dock="Top" Source="/Resources/Images/about-header.png" Stretch="None" Height="42" />
             <StackPanel Margin="20,0,20,20">
+                <!--<TextBlock Text="Azure DevOps Tools" Foreground="#FF294EF3" FontSize="24" FontWeight="Bold" >
+                    <TextBlock.Effect>
+                        <DropShadowEffect Opacity="0.75" BlurRadius="10"/>
+                    </TextBlock.Effect>
+                </TextBlock>-->
                 <TextBlock Text="{x:Static info:ApplicationInfo.ProductName}" />
                 <TextBlock Text="{x:Static info:ApplicationInfo.Description}" />
 
@@ -42,7 +47,7 @@
                 <TextBlock>
                     <Run Text="Original Author: " /><Hyperlink NavigateUri="https://github.com/BrWelsh" Command="{Binding NavigateUrlCommand}" CommandParameter="{Binding NavigateUri, RelativeSource={RelativeSource Self}}"><Run Text="Brian Welsh" /></Hyperlink>
                 </TextBlock>
-                <ListBox DataContext="{x:Static info:ApplicationInfo.ApplicationAssemblies}" Height="100">
+                <ListBox DataContext="{Binding Path=ApplicationAssemblies}" Height="100">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Path=Name}" />

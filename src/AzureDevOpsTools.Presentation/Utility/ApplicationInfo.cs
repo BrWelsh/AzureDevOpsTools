@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
+using AzureDevOpsTools.Model;
 using AzureDevOpsTools.Presentation.Internal;
 
 using Microsoft.VisualBasic.CompilerServices;
@@ -29,6 +30,9 @@ namespace AzureDevOpsTools.Presentation.Utility
         private static readonly Lazy<Uri> repositoryUri = new Lazy<Uri>(GetRepositoryUri);
         private static readonly Lazy<Uri> projectUri = new Lazy<Uri>(GetProjectUri);
         private static readonly Lazy<Uri> projectWebsite = new Lazy<Uri>(GetProjectWebsite);
+        private static readonly Lazy<IEnumerable<Credit>> credits = new Lazy<IEnumerable<Credit>>(GetCredits);
+
+        public static IEnumerable<Credit> Credits => credits.Value;
 
         public static Uri ProjectWebsite => projectWebsite.Value;
 
@@ -198,6 +202,16 @@ namespace AzureDevOpsTools.Presentation.Utility
                 metadata = "https://welshnson.github.io/";
             }
             return new Uri(metadata, UriKind.Absolute);
+        }
+
+        private static IEnumerable<Credit> GetCredits()
+        {
+            List<Credit> result = new List<Credit>
+            {
+                new Credit("Welsh N Son", "http://www.welshnson.com/"),
+                new Credit("MahApps", "https://mahapps.com/")
+            };
+            return result;
         }
     }
 #pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.

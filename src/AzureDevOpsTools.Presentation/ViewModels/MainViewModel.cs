@@ -9,6 +9,8 @@ using AzureDevOpsTools.Presentation.Services;
 using AzureDevOpsTools.Presentation.Utility;
 using AzureDevOpsTools.Presentation.Views.Dialogs;
 
+using MahApps.Metro.Controls.Dialogs;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -21,18 +23,21 @@ namespace AzureDevOpsTools.Presentation.ViewModels
     {
 #pragma warning disable IDE0052 // Remove unread private members
 
-        private readonly IApplicationContextService applicationContextService;
         private readonly IHost host;
+        private readonly IApplicationContextService applicationContextService;
+        private readonly IDialogCoordinator dialogCoordinator;
 
         public MainViewModel(
                 IHost host,
                 IApplicationContextService applicationContextService,
+                IDialogCoordinator dialogCoordinator,
                 ILogger<MainViewModel> logger)
             : base(logger)
         {
-            this.host = host;
             Logger.LogDebug("Constructing");
+            this.host = host;
             this.applicationContextService = applicationContextService;
+            this.dialogCoordinator = dialogCoordinator;
 
             AboutDialogCommand = ReactiveCommand.CreateFromTask(ShowAboutDialogExecute);
         }

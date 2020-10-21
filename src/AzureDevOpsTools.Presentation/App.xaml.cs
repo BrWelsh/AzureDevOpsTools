@@ -14,6 +14,8 @@ using AzureDevOpsTools.Presentation.ViewModels;
 using AzureDevOpsTools.Presentation.Views;
 using AzureDevOpsTools.Presentation.Views.Dialogs;
 
+using MahApps.Metro.Controls.Dialogs;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -113,6 +115,7 @@ namespace AzureDevOpsTools.Presentation
                 .AddTransient<MainWindow>()
                 .AddTransient<AboutDialog>()
                 .AddTransient<IAboutApplicaitonViewModel, AboutApplicaitonViewModel>()
+                .AddSingleton<IDialogCoordinator, DialogCoordinator>()
                 .AddSingleton<IApplicationContextService, ApplicationContextService>()
                 .AddSingleton<IMainViewModel, MainViewModel>();
 

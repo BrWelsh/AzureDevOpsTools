@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -33,5 +35,7 @@ namespace AzureDevOpsTools.Presentation.ViewModels
         public Uri RepositoryUri => ApplicationInfo.RepositoryUri;
 
         public Uri Website => ApplicationInfo.ProjectWebsite;
+
+        public IEnumerable<Assembly> ApplicationAssemblies => ApplicationInfo.ApplicationAssemblies;
     }
 }

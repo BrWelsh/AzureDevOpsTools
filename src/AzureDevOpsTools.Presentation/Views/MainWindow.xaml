@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
-        Height="650" Width="750" MinWidth="600" MinHeight="600"
+        Dialog:DialogParticipation.Register="{Binding}"
         xmlns:local="clr-namespace:AzureDevOpsTools.Presentation.Views"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
@@ -21,7 +22,7 @@
             <DockPanel LastChildFill="True">
                 <ContentPresenter DockPanel.Dock="Left" />
                 <!-- Control Center -->
-                <Button DockPanel.Dock="Top" Width="30" Height="30" Background="{StaticResource Settings_Inverse_16x}" Command="{Binding AboutDialogCommand}" />
+                <Button DockPanel.Dock="Top" HorizontalAlignment="Right" Width="30" Height="30" Background="{StaticResource Settings_Inverse_16x}" Command="{Binding AboutDialogCommand}" />
                 <ContentPresenter />
             </DockPanel>
         </DockPanel>
