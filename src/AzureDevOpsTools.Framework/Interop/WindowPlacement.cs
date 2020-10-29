@@ -7,6 +7,8 @@ namespace AzureDevOpsTools.Interop
 #pragma warning disable CA1815 // Override equals and operator equals on value types
 #pragma warning disable IDE1006 // Naming Styles
 #pragma warning disable CA1051 // Do not declare visible instance fields
+#pragma warning disable SA1307 // Accessible fields should begin with upper-case letter
+#pragma warning disable SA1600 // Elements should be documented
 
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
@@ -25,18 +27,21 @@ namespace AzureDevOpsTools.Interop
             return string.Format(
                 CultureInfo.InvariantCulture,
                 "{0}|{1}|{2}|{3}|{4}|{5}",
-                length,
-                flags,
-                showCmd,
-                minPosition,
-                maxPosition,
-                normalPosition);
+                this.length,
+                this.flags,
+                this.showCmd,
+                this.minPosition,
+                this.maxPosition,
+                this.normalPosition);
         }
 
         public static WindowPlacement Parse(string value)
         {
             if (value is null)
+            {
                 throw new ArgumentNullException(nameof(value));
+            }
+
             string[] parts = value.Split('|');
 
             if (parts.Length != 6)
@@ -75,22 +80,26 @@ namespace AzureDevOpsTools.Interop
 
         public Rect(int left, int top, int width, int height)
         {
-            Left = left;
-            Top = top;
-            Width = width;
-            Height = height;
+            this.Left = left;
+            this.Top = top;
+            this.Width = width;
+            this.Height = height;
         }
 
         public override string ToString()
         {
-            return string.Format(CultureInfo.InvariantCulture, "{0};{1};{2};{3}", Left, Top, Width, Height);
+            return string.Format(CultureInfo.InvariantCulture, "{0};{1};{2};{3}", this.Left, this.Top, this.Width, this.Height);
         }
 
         public static Rect Parse(string value)
         {
             if (value is null)
+            {
                 throw new ArgumentNullException(nameof(value));
-            int[] ss = Array.ConvertAll(value.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries),
+            }
+
+            int[] ss = Array.ConvertAll(
+                value.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries),
                                         v => int.Parse(v, CultureInfo.InvariantCulture));
             return ss.Length == 4 ? new Rect(ss[0], ss[1], ss[2], ss[3]) : new Rect();
         }
@@ -103,27 +112,37 @@ namespace AzureDevOpsTools.Interop
         public int X;
         public int Y;
 
+        public static Point Parse(string value)
+        {
+            if (value is null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            int[] ss = Array.ConvertAll(
+                value.Split(
+                    new[] { ';' },
+                    StringSplitOptions.RemoveEmptyEntries),
+                v => int.Parse(v, CultureInfo.InvariantCulture));
+#pragma warning disable SA1129 // Do not use default value type constructor
+            return ss.Length == 2 ? new Point(ss[0], ss[1]) : new Point();
+#pragma warning restore SA1129 // Do not use default value type constructor
+        }
+
         public Point(int x, int y)
         {
-            X = x;
-            Y = y;
+            this.X = x;
+            this.Y = y;
         }
 
         public override string ToString()
         {
-            return string.Format(CultureInfo.InvariantCulture, "{0};{1}", X, Y);
-        }
-
-        public static Point Parse(string value)
-        {
-            if (value is null)
-                throw new ArgumentNullException(nameof(value));
-            int[] ss = Array.ConvertAll(value.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries),
-                                        v => int.Parse(v, CultureInfo.InvariantCulture));
-            return ss.Length == 2 ? new Point(ss[0], ss[1]) : new Point();
+            return string.Format(CultureInfo.InvariantCulture, "{0};{1}", this.X, this.Y);
         }
     }
 
+#pragma warning restore SA1600 // Elements should be documented
+#pragma warning restore SA1307 // Accessible fields should begin with upper-case letter
 #pragma warning restore CA1051 // Do not declare visible instance fields
 #pragma warning restore CA1815 // Override equals and operator equals on value types
 #pragma warning restore IDE1006 // Naming Styles

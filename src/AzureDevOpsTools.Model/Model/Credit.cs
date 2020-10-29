@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AzureDevOpsTools.Model
 {
@@ -8,8 +6,8 @@ namespace AzureDevOpsTools.Model
     {
         public Credit(string name, Uri uri)
         {
-            Name = name;
-            Uri = uri;
+            this.Name = name;
+            this.Uri = uri;
         }
 
         public Credit(string name, string uri)

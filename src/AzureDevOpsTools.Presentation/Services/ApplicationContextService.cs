@@ -23,19 +23,19 @@ namespace AzureDevOpsTools.Presentation.Services
                 ILogger<ApplicationContextService> logger)
             : base(logger)
         {
-            applicationSettings = appSettings?.Value;
-            userPreferences = userPrefs?.Value;
+            this.applicationSettings = appSettings?.Value;
+            this.userPreferences = userPrefs?.Value;
         }
 
-        public ApplicationSettings ApplicationSettings => applicationSettings;
+        public ApplicationSettings ApplicationSettings => this.applicationSettings;
 
-        public UserPreferences UserPreferences => userPreferences;
+        public UserPreferences UserPreferences => this.userPreferences;
 
         public void Save()
         {
             UserPreferencesRoot root = new UserPreferencesRoot
             {
-                UserPreferences = userPreferences
+                UserPreferences = this.userPreferences
             };
             string json = JsonSerializer.Serialize(root);
             System.IO.File.WriteAllText(ApplicationInfo.UserProfilePath, json);

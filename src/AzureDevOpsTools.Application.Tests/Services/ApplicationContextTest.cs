@@ -23,7 +23,7 @@ namespace AzureDevOpsTools.Application.Tests.Services
         [TestInitialize]
         public override void Initialize()
         {
-            host = Host.CreateDefaultBuilder()
+            this.host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
                     services.Configure<ApplicationSettings>(context.Configuration.GetSection(nameof(ApplicationSettings)));
@@ -48,51 +48,51 @@ namespace AzureDevOpsTools.Application.Tests.Services
                 .ConfigureHostConfiguration((builder) => builder.AddCommandLine(Environment.GetCommandLineArgs()))
                 .Build();
 
-            applicationContextService = host.Services.GetRequiredService<IApplicationContextService>();
+            this.applicationContextService = this.host.Services.GetRequiredService<IApplicationContextService>();
         }
 
         [TestMethod]
         public void HostBuilderCreationTest()
         {
-            Assert.IsNotNull(host);
+            Assert.IsNotNull(this.host);
         }
 
         [TestMethod]
         public void ValidateApplicationContextServiceTest()
         {
-            Assert.IsNotNull(applicationContextService);
+            Assert.IsNotNull(this.applicationContextService);
         }
 
         [TestMethod]
         public void ValidateLoggerTest()
         {
-            Assert.IsNotNull(applicationContextService.Logger);
+            Assert.IsNotNull(this.applicationContextService.Logger);
         }
 
         [TestMethod]
         public void ValidateApplicationSettingsTest()
         {
-            Assert.IsNotNull(applicationContextService.ApplicationSettings);
+            Assert.IsNotNull(this.applicationContextService.ApplicationSettings);
         }
 
         [TestMethod]
         public void ValidateUserPreferencesTest()
         {
-            Assert.IsNotNull(applicationContextService.UserPreferences);
-            Assert.IsNotNull(applicationContextService.UserPreferences);
-            Assert.IsNotNull(applicationContextService.UserPreferences.DefaultOrganization);
-            Assert.AreNotEqual(string.Empty, applicationContextService.UserPreferences.DefaultOrganization);
-            Assert.IsNotNull(applicationContextService.UserPreferences.PersonalAccessToken);
-            Assert.AreNotEqual(string.Empty, applicationContextService.UserPreferences.PersonalAccessToken.Name);
-            Assert.AreNotEqual(string.Empty, applicationContextService.UserPreferences.PersonalAccessToken.Value);
+            Assert.IsNotNull(this.applicationContextService.UserPreferences);
+            Assert.IsNotNull(this.applicationContextService.UserPreferences);
+            Assert.IsNotNull(this.applicationContextService.UserPreferences.DefaultOrganization);
+            Assert.AreNotEqual(string.Empty, this.applicationContextService.UserPreferences.DefaultOrganization);
+            Assert.IsNotNull(this.applicationContextService.UserPreferences.PersonalAccessToken);
+            Assert.AreNotEqual(string.Empty, this.applicationContextService.UserPreferences.PersonalAccessToken.Name);
+            Assert.AreNotEqual(string.Empty, this.applicationContextService.UserPreferences.PersonalAccessToken.Value);
         }
 
         [TestCleanup]
         public override void TestCleanup()
         {
-            using (host)
+            using (this.host)
             {
-                host.StopAsync().Wait();
+                this.host.StopAsync().Wait();
             }
         }
     }

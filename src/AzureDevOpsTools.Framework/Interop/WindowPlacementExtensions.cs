@@ -1,10 +1,15 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Interop;
+﻿
 
 namespace AzureDevOpsTools.Interop
 {
+#pragma warning disable SA1600 // Elements should be documented
+#pragma warning disable SA1119 // Statement should not use unnecessary parenthesis
+
+    using System;
+    using System.Runtime.InteropServices;
+    using System.Windows;
+    using System.Windows.Interop;
+
     public static class WindowPlacementExtensions
     {
         public static void LoadWindowPlacementFromSettings(this Window window, string setting)
@@ -32,4 +37,6 @@ namespace AzureDevOpsTools.Interop
             return wp.ToString();
         }
     }
+#pragma warning restore SA1119 // Statement should not use unnecessary parenthesis
+#pragma warning restore SA1600 // Elements should be documented
 }

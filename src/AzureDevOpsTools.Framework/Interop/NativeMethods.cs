@@ -49,8 +49,7 @@ namespace AzureDevOpsTools.Interop
             [param: Out, MarshalAs(UnmanagedType.SysInt)] out IntPtr ppKey,
             [param: Out, MarshalAs(UnmanagedType.U4)] out uint pcKey,
             [param: Out, MarshalAs(UnmanagedType.SysInt)] out IntPtr ppVal,
-            [param: Out, MarshalAs(UnmanagedType.U4)] out uint pcVal
-        );
+            [param: Out, MarshalAs(UnmanagedType.U4)] out uint pcVal);
 #pragma warning restore CA5392 // Use DefaultDllImportSearchPaths attribute for P/Invokes
     }
 }

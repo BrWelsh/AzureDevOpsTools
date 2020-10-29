@@ -22,7 +22,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 /**********************************
- * Useful references: 
+ * Useful references:
  *  https://andrewlock.net/avoiding-startup-service-injection-in-asp-net-core-3/
  *  https://github.com/Squirrel/Squirrel.Windows
  *  https://marcominerva.wordpress.com/2019/03/06/using-net-core-3-0-dependency-injection-and-service-provider-with-wpf/
@@ -46,7 +46,7 @@ namespace AzureDevOpsTools.Presentation
             ProfileOptimization.SetProfileRoot(profileRoot);
             ProfileOptimization.StartProfile("Startup.profile");
 
-            host = App.ConfigureHost();
+            this.host = App.ConfigureHost();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
@@ -60,14 +60,14 @@ namespace AzureDevOpsTools.Presentation
             DispatcherUnhandledException += AppDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += AppDomainUnhandledException;
 #endif
-            MainWindow = host.Services.GetRequiredService<MainWindow>();
-            IMainViewModel vm = host.Services.GetRequiredService<IMainViewModel>();
+            this.MainWindow = this.host.Services.GetRequiredService<MainWindow>();
+            IMainViewModel vm = this.host.Services.GetRequiredService<IMainViewModel>();
 
             await vm.InitializeAsync(null);
 
-            MainWindow.DataContext = vm;
+            this.MainWindow.DataContext = vm;
 
-            MainWindow.Show();
+            this.MainWindow.Show();
 
             base.OnStartup(e);
 
@@ -76,11 +76,11 @@ namespace AzureDevOpsTools.Presentation
 
         protected override async void OnExit(ExitEventArgs e)
         {
-            host.Services.GetRequiredService<IApplicationContextService>().Save();
+            this.host.Services.GetRequiredService<IApplicationContextService>().Save();
 
-            using (host)
+            using (this.host)
             {
-                await host.StopAsync();
+                await this.host.StopAsync();
             }
             base.OnExit(e);
         }
@@ -119,14 +119,14 @@ namespace AzureDevOpsTools.Presentation
                 .AddSingleton<IApplicationContextService, ApplicationContextService>()
                 .AddSingleton<IMainViewModel, MainViewModel>();
 
-            //.AddSingleton<IAzdoAuthenticationService, AzdoPatAuthenticationService>()
-            //.AddSingleton<IUserContextService, UserContextService>()
-            //.AddSingleton<IAzureDevOpsService, AzureDevOpsService>()
-            //.AddSingleton<IOctopusService, OctopusService>()
-            //.AddSingleton<IView, TabbedView>()
-            //.AddScoped<IManagePreferencesService, ManagePreferencesService>()
-            //.AddTransient<MainViewModel>()
-            //.AddTransient<UserPreferencesViewModel>();
+            // .AddSingleton<IAzdoAuthenticationService, AzdoPatAuthenticationService>()
+            // .AddSingleton<IUserContextService, UserContextService>()
+            // .AddSingleton<IAzureDevOpsService, AzureDevOpsService>()
+            // .AddSingleton<IOctopusService, OctopusService>()
+            // .AddSingleton<IView, TabbedView>()
+            // .AddScoped<IManagePreferencesService, ManagePreferencesService>()
+            // .AddTransient<MainViewModel>()
+            // .AddTransient<UserPreferencesViewModel>();
         }
 
         private void AppDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
@@ -141,12 +141,21 @@ namespace AzureDevOpsTools.Presentation
 
         private static void HandleException(Exception? e, bool isTerminating)
         {
-            if (e == null) return;
+            if (e == null)
+            {
+                return;
+            }
 
             if (!isTerminating)
             {
-                MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Presentation.Properties.Resources.UnknownError, e),
-                    ApplicationInfo.ProductName, MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(
+                    string.Format(
+                        CultureInfo.CurrentCulture,
+                        Presentation.Properties.Resources.UnknownError,
+                        e),
+                    ApplicationInfo.ProductName,
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
     }

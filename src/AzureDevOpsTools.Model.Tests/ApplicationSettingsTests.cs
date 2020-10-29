@@ -13,13 +13,13 @@ namespace AzureDevOpsTools.Model.Tests
         [TestInitialize]
         public override void Initialize()
         {
-            applicationSettings = new ApplicationSettings();
+            this.applicationSettings = new ApplicationSettings();
         }
 
         [TestMethod]
         public void CanCreateEmptyPoco()
         {
-            Assert.AreNotEqual(null, applicationSettings);
+            Assert.AreNotEqual(null, this.applicationSettings);
         }
     }
 }

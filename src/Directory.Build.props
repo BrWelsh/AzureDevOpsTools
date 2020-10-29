@@ -3,10 +3,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>    
   </PropertyGroup>
-  
+
+  <!--<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">-->
+    
   <PropertyGroup>
     <!-- Update this version number to adopt a new version of FxCopAnalyzers -->
-    <FxCopAnalyzersVersion>3.3.0</FxCopAnalyzersVersion>
+    <FxCopAnalyzersVersion>3.3.1</FxCopAnalyzersVersion>
+    <StyleCopAnalyzersVersion>1.1.118</StyleCopAnalyzersVersion>
+    <!--<StyleCopAnalyzersVersion>1.2.0-beta.205</StyleCopAnalyzersVersion>-->
   </PropertyGroup>
   
     <Choose>
@@ -43,6 +47,10 @@
     <NoWarn>CS1998,3024</NoWarn>
     <CaRulesetName>AllRulesEnabled</CaRulesetName>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <AdditionalFiles Include='$([System.IO.Path]::Combine($(SolutionDir), "stylecop.json"))' />
+  </ItemGroup>
 
   <PropertyGroup>
     <CodeAnalysisTreatWarningsAsErrors>$(TreatWarningsAsErrors)</CodeAnalysisTreatWarningsAsErrors>
@@ -68,8 +76,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    
+    <PackageReference Include="StyleCop.Analyzers" Version="$(StyleCopAnalyzersVersion)">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37" PrivateAssets="all" />
   </ItemGroup>
+
+  
   
   <ItemGroup Condition="Exists('$(ProjectToolsDirectory)\CommonAssemblyInfo.cs')">
     <Compile Include="$(ProjectToolsDirectory)\CommonAssemblyInfo.cs" LinkBase="Properties" />

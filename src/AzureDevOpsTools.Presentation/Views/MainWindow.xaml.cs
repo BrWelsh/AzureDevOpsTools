@@ -1,10 +1,11 @@
 using System;
 using System.ComponentModel;
-using System.Windows;
 
 using AzureDevOpsTools.Interop;
 using AzureDevOpsTools.Model.Settings;
+
 using MahApps.Metro.Controls;
+
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -22,7 +23,7 @@ namespace AzureDevOpsTools.Presentation.Views
 
         private MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         public MainWindow(
@@ -31,12 +32,12 @@ namespace AzureDevOpsTools.Presentation.Views
             : this()
         {
             this.logger = logger;
-            userPreferences = userPrefs?.Value;
+            this.userPreferences = userPrefs?.Value;
 
-            Closing += MainWindow_Closing;
+            this.Closing += this.MainWindow_Closing;
         }
 
-        private ILogger Logger => logger;
+        private ILogger Logger => this.logger;
 
 #pragma warning disable CA1031 // Do not catch general exception types
 
@@ -45,11 +46,11 @@ namespace AzureDevOpsTools.Presentation.Views
             base.OnSourceInitialized(e);
             try
             {
-                LoadSettings();
+                this.LoadSettings();
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex, "Error loading settings.");
+                this.Logger.LogError(ex, "Error loading settings.");
             }
         }
 
@@ -57,17 +58,17 @@ namespace AzureDevOpsTools.Presentation.Views
 
         private void LoadSettings()
         {
-            this.LoadWindowPlacementFromSettings(userPreferences.WindowPlacement);
+            this.LoadWindowPlacementFromSettings(this.userPreferences.WindowPlacement);
         }
 
         private void SaveSettings()
         {
-            userPreferences.WindowPlacement = this.SaveWindowPlacementToSettings();
+            this.userPreferences.WindowPlacement = this.SaveWindowPlacementToSettings();
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
-            SaveSettings();
+            this.SaveSettings();
         }
 
 #pragma warning restore IDE0032 // Use auto property

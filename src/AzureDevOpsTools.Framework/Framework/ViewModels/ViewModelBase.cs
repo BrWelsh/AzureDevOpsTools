@@ -20,35 +20,35 @@ namespace AzureDevOpsTools.Framework.ViewModels
             this.logger = logger;
         }
 
-        protected virtual ILogger Logger { get => logger; }
+        protected virtual ILogger Logger { get => this.logger; }
 
-        public bool IsBusy { get => isBusy; protected set => this.RaiseAndSetIfChanged(ref isBusy, value); }
+        public bool IsBusy { get => this.isBusy; protected set => this.RaiseAndSetIfChanged(ref this.isBusy, value); }
 
-        public bool IsReady { get => isReady; protected set => this.RaiseAndSetIfChanged(ref isReady, value); }
+        public bool IsReady { get => this.isReady; protected set => this.RaiseAndSetIfChanged(ref this.isReady, value); }
 
-        public bool IsInitializing { get => isInitializing; private set => this.RaiseAndSetIfChanged(ref isInitializing, value); }
+        public bool IsInitializing { get => this.isInitializing; private set => this.RaiseAndSetIfChanged(ref this.isInitializing, value); }
 
         public async Task InitializeAsync(object parameter)
         {
-            IsInitializing = true;
-            IsBusy = true;
-            IsReady = false;
+            this.IsInitializing = true;
+            this.IsBusy = true;
+            this.IsReady = false;
             try
             {
-                await DoInitializeAsync(parameter);
+                await this.DoInitializeAsync(parameter);
             }
             finally
             {
-                IsInitializing = false;
-                IsBusy = false;
-                IsReady = true;
+                this.IsInitializing = false;
+                this.IsBusy = false;
+                this.IsReady = true;
             }
         }
 
         protected virtual Task DoInitializeAsync(object parameter)
         {
             // TODO: remove magic strings
-            Logger.LogError("Override of DoInitializeAsync() is required");
+            this.Logger.LogError("Override of DoInitializeAsync() is required");
 
 #pragma warning disable RCS1079 // Throwing of new NotImplementedException.
             throw new NotImplementedException("Override of DoInitialiseAsync must implemented.");

@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using AzureDevOpsTools.Framework.Windows.Dialogs;
+﻿using AzureDevOpsTools.Framework.Windows.Dialogs;
 
 namespace AzureDevOpsTools.Presentation.Views.Dialogs
 {
@@ -10,7 +9,7 @@ namespace AzureDevOpsTools.Presentation.Views.Dialogs
     {
         public AboutDialog()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

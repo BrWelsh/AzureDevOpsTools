@@ -8,6 +8,7 @@ using AzureDevOpsTools.Framework.ViewModels;
 using AzureDevOpsTools.Presentation.Utility;
 
 using Microsoft.Extensions.Logging;
+
 using ReactiveUI;
 
 namespace AzureDevOpsTools.Presentation.ViewModels
@@ -17,12 +18,12 @@ namespace AzureDevOpsTools.Presentation.ViewModels
         public AboutApplicaitonViewModel(ILogger<AboutApplicaitonViewModel> logger)
             : base(logger)
         {
-            NavigateUriCommand = ReactiveCommand.CreateFromTask<Uri>(NavigateToUrlCommand);
+            this.NavigateUriCommand = ReactiveCommand.CreateFromTask<Uri>(this.NavigateToUrlCommand);
         }
 
         private async Task NavigateToUrlCommand(Uri link)
         {
-            Logger.LogInformation($"Navigating to {link}");
+            this.Logger.LogInformation($"Navigating to {link}");
             await Task<object>.Run(() => UriHelper.OpenExternalLink(link));
         }
 
