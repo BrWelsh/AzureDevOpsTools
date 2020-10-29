@@ -1,4 +1,12 @@
+//-----------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System.Windows;
+
+#pragma warning disable SA1515
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, // where theme specific resource dictionaries are located
@@ -8,3 +16,4 @@ using System.Windows;
                                               // (used if a resource is not found in the page,
                                               // app, or any theme specific resource dictionaries)
 )]
+#pragma warning restore SA1515

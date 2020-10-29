@@ -1,4 +1,9 @@
-﻿using System.Diagnostics;
+//-----------------------------------------------------------------------
+// <copyright file="EnvironmentTelemetryInitializer.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+using System.Diagnostics;
 
 using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.Extensibility;

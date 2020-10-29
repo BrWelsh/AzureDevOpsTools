@@ -1,3 +1,8 @@
+//-----------------------------------------------------------------------
+// <copyright file="App.xaml.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 using System;
 using System.Globalization;
 using System.IO;
@@ -32,8 +37,9 @@ using Microsoft.Extensions.Logging;
 namespace AzureDevOpsTools.Presentation
 {
 #pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Interaction logic for App.xaml.
     /// </summary>
     public partial class App : Application
     {
@@ -53,10 +59,9 @@ namespace AzureDevOpsTools.Presentation
         {
             SplashScreen splashScreen
                 = new SplashScreen(ApplicationConstants.SplashScreenImageResourcePath);
-            // splashScreen.Show();
             splashScreen.Show(false, false);
 
-#if (!DEBUG)
+#if !DEBUG
             DispatcherUnhandledException += AppDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += AppDomainUnhandledException;
 #endif
@@ -82,6 +87,7 @@ namespace AzureDevOpsTools.Presentation
             {
                 await this.host.StopAsync();
             }
+
             base.OnExit(e);
         }
 
@@ -158,6 +164,7 @@ namespace AzureDevOpsTools.Presentation
                     MessageBoxImage.Error);
             }
         }
+
     }
 #pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
 }

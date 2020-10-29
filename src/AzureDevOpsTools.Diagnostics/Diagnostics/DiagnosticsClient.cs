@@ -1,4 +1,9 @@
-﻿using System;
+//-----------------------------------------------------------------------
+// <copyright file="DiagnosticsClient.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;

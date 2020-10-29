@@ -1,10 +1,15 @@
-﻿using AzureDevOpsTools.UnitTest.Framework;
+//-----------------------------------------------------------------------
+// <copyright file="MainViewModelTests.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+using AzureDevOpsTools.UnitTest.Framework;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AzureDevOpsTools.Presentation.ViewModels.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class MainViewModelTests : UnitTestBase<MainViewModelTests>
     {
         [TestInitialize]
@@ -12,7 +17,7 @@ namespace AzureDevOpsTools.Presentation.ViewModels.Tests
         {
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void MainViewModelTest()
         {
         }

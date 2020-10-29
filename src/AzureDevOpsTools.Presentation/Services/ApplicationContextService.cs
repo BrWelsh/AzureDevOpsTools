@@ -1,3 +1,8 @@
+//-----------------------------------------------------------------------
+// <copyright file="ApplicationContextService.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 using System.Text.Json;
 
 using AzureDevOpsTools.Model.Settings;
@@ -35,7 +40,7 @@ namespace AzureDevOpsTools.Presentation.Services
         {
             UserPreferencesRoot root = new UserPreferencesRoot
             {
-                UserPreferences = this.userPreferences
+                UserPreferences = this.userPreferences,
             };
             string json = JsonSerializer.Serialize(root);
             System.IO.File.WriteAllText(ApplicationInfo.UserProfilePath, json);

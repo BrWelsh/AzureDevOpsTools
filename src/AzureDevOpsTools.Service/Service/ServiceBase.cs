@@ -1,4 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+//-----------------------------------------------------------------------
+// <copyright file="ServiceBase.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+using Microsoft.Extensions.Logging;
 
 namespace AzureDevOpsTools.Service
 {

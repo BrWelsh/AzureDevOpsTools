@@ -1,4 +1,9 @@
-﻿using System;
+//-----------------------------------------------------------------------
+// <copyright file="UriHelper.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+using System;
 using System.Diagnostics;
 
 namespace AzureDevOpsTools.Presentation.Utility
@@ -9,7 +14,6 @@ namespace AzureDevOpsTools.Presentation.Utility
 
         static UriHelper()
         {
-
         }
 
         public static void OpenExternalLink(string link)
@@ -21,7 +25,9 @@ namespace AzureDevOpsTools.Presentation.Utility
                     OpenExternalLink(new Uri(link));
                 }
             }
-            catch { } // Possible error but nothing we can do
+            catch
+            {
+            } // Possible error but nothing we can do
         }
 
         public static void OpenExternalLink(Uri link)
@@ -33,7 +39,7 @@ namespace AzureDevOpsTools.Presentation.Utility
                     ProcessStartInfo psi = new ProcessStartInfo
                     {
                         FileName = link.AbsoluteUri,
-                        UseShellExecute = true
+                        UseShellExecute = true,
                     };
                     Process.Start(psi);
                 }
@@ -41,7 +47,6 @@ namespace AzureDevOpsTools.Presentation.Utility
             catch // Possible Win32 exception: operation was canceled by the user. Nothing we can do.
             {
             }
-
         }
 
         public static bool IsRemoteUri(this Uri url)
@@ -58,8 +63,8 @@ namespace AzureDevOpsTools.Presentation.Utility
             }
 
             string scheme = url.Scheme;
-            return (scheme.Equals(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) ||
-                    scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase));
+            return scheme.Equals(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) ||
+                    scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase);
         }
 
 #pragma warning restore CA1031 // Do not catch general exception types

@@ -1,12 +1,18 @@
-﻿namespace AzureDevOpsTools.Framework.Windows.Dialogs
+//-----------------------------------------------------------------------
+// <copyright file="StandardDialog.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Interop;
+
+using AzureDevOpsTools.Interop;
+
+namespace AzureDevOpsTools.Framework.Windows.Dialogs
 {
-    using System;
-    using System.Diagnostics;
-    using System.Windows;
-    using System.Windows.Interop;
-
-    using AzureDevOpsTools.Interop;
-
 #pragma warning disable CA1806 // Do not ignore method results
 #pragma warning disable CA1822 // Mark members as static
 #pragma warning disable SA1600 // Elements should be documented
@@ -86,7 +92,9 @@
         // Remove unused member declaration.
 #pragma warning disable IDE0051, RCS1018, RCS1213
 #pragma warning disable SA1400 // Access modifier should be declared
-        void InitializeComponent() { }
+        void InitializeComponent()
+        {
+        }
 #pragma warning restore SA1400 // Access modifier should be declared
 #pragma warning restore RCS1213, RCS1018, IDE0051
 

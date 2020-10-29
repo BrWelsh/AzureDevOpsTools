@@ -1,3 +1,8 @@
+//-----------------------------------------------------------------------
+// <copyright file="MainViewModel.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -57,6 +62,7 @@ namespace AzureDevOpsTools.Presentation.ViewModels
         protected override Task DoInitializeAsync(object parameter)
         {
             this.Logger.LogInformation("Initializing");
+
             // return base.DoInitializeAsync(parameter);
             this.IsReady = true;
             this.IsBusy = false;

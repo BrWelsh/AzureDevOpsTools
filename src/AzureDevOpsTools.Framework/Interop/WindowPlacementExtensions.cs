@@ -1,14 +1,18 @@
-﻿
+//-----------------------------------------------------------------------
+// <copyright file="WindowPlacementExtensions.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Interop;
 
 namespace AzureDevOpsTools.Interop
 {
 #pragma warning disable SA1600 // Elements should be documented
 #pragma warning disable SA1119 // Statement should not use unnecessary parenthesis
-
-    using System;
-    using System.Runtime.InteropServices;
-    using System.Windows;
-    using System.Windows.Interop;
 
     public static class WindowPlacementExtensions
     {

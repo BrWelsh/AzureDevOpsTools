@@ -1,3 +1,8 @@
+//-----------------------------------------------------------------------
+// <copyright file="MainWindow.xaml.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 using System;
 using System.ComponentModel;
 
@@ -12,7 +17,7 @@ using Microsoft.Extensions.Options;
 namespace AzureDevOpsTools.Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
@@ -20,11 +25,6 @@ namespace AzureDevOpsTools.Presentation.Views
 
         private readonly ILogger logger;
         private readonly UserPreferences userPreferences;
-
-        private MainWindow()
-        {
-            this.InitializeComponent();
-        }
 
         public MainWindow(
                 IOptions<UserPreferences> userPrefs,
@@ -35,6 +35,11 @@ namespace AzureDevOpsTools.Presentation.Views
             this.userPreferences = userPrefs?.Value;
 
             this.Closing += this.MainWindow_Closing;
+        }
+
+        private MainWindow()
+        {
+            this.InitializeComponent();
         }
 
         private ILogger Logger => this.logger;

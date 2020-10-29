@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="ApplicationInfo.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +16,8 @@ using AzureDevOpsTools.Presentation.Internal;
 namespace AzureDevOpsTools.Presentation.Utility
 {
 #pragma warning disable CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
+#pragma warning disable SA1311 // Static readonly fields should begin with upper-case letter
+#pragma warning disable SA1600 // Elements should be documented
 
     /// <summary>This class provides information about the running application.</summary>
     public static class ApplicationInfo
@@ -36,7 +44,7 @@ namespace AzureDevOpsTools.Presentation.Utility
 
         public static Uri ProjectUri => projectUri.Value;
 
-        /// <summary>Gets the Repository Uri</summary>
+        /// <summary>Gets the Repository Uri.</summary>
         public static Uri RepositoryUri => repositoryUri.Value;
 
         /// <summary>Gets the product name of the application.</summary>
@@ -45,10 +53,10 @@ namespace AzureDevOpsTools.Presentation.Utility
         /// <summary>Gets the version number of the application.</summary>
         public static string Version => version.Value;
 
-        /// <summary>Gets the applicaiton assemblies</summary>
+        /// <summary>Gets the applicaiton assemblies.</summary>
         public static IEnumerable<Assembly> ApplicationAssemblies => applicationAssemblies.Value;
 
-        /// <summary>Gets teh description</summary>
+        /// <summary>Gets teh description.</summary>
         public static string Description => description.Value;
 
         /// <summary>Gets the company of the application.</summary>
@@ -57,19 +65,19 @@ namespace AzureDevOpsTools.Presentation.Utility
         /// <summary>Gets the copyright information of the application.</summary>
         public static string Copyright => copyright.Value;
 
-        /// <summary>Gets the configuration</summary>
+        /// <summary>Gets the configuration.</summary>
         public static string Configuration => configuration.Value;
 
-        /// <summary>Gets the informational version</summary>
+        /// <summary>Gets the informational version.</summary>
         public static string InformationalVersion => informationalVersion.Value;
 
         /// <summary>Gets the path for the executable file that started the application, not including the executable name.</summary>
         public static string ApplicationPath => applicationPath.Value;
 
-        /// <summary>Gets the AppData path</summary>
+        /// <summary>Gets the AppData path.</summary>
         public static string AppDataPath => appDataPath.Value;
 
-        /// <summary>Gets the user profile path</summary>
+        /// <summary>Gets the user profile path.</summary>
         public static string UserProfilePath => userProfilePath.Value;
 
         private static string GetConfiguration()
@@ -80,6 +88,7 @@ namespace AzureDevOpsTools.Presentation.Utility
                 AssemblyConfigurationAttribute attribute = (AssemblyConfigurationAttribute?)Attribute.GetCustomAttribute(entryAssembly, typeof(AssemblyConfigurationAttribute));
                 return attribute?.Configuration ?? string.Empty;
             }
+
             return string.Empty;
         }
 
@@ -91,6 +100,7 @@ namespace AzureDevOpsTools.Presentation.Utility
                 AssemblyProductAttribute attribute = (AssemblyProductAttribute?)Attribute.GetCustomAttribute(entryAssembly, typeof(AssemblyProductAttribute));
                 return attribute?.Product ?? string.Empty;
             }
+
             return string.Empty;
         }
 
@@ -107,6 +117,7 @@ namespace AzureDevOpsTools.Presentation.Utility
                 AssemblyInformationalVersionAttribute attribute = (AssemblyInformationalVersionAttribute?)Attribute.GetCustomAttribute(entryAssembly, typeof(AssemblyInformationalVersionAttribute));
                 return attribute?.InformationalVersion ?? string.Empty;
             }
+
             return string.Empty;
         }
 
@@ -118,6 +129,7 @@ namespace AzureDevOpsTools.Presentation.Utility
                 AssemblyCompanyAttribute attribute = (AssemblyCompanyAttribute?)Attribute.GetCustomAttribute(entryAssembly, typeof(AssemblyCompanyAttribute));
                 return attribute?.Company ?? string.Empty;
             }
+
             return string.Empty;
         }
 
@@ -129,6 +141,7 @@ namespace AzureDevOpsTools.Presentation.Utility
                 AssemblyCopyrightAttribute attribute = (AssemblyCopyrightAttribute?)Attribute.GetCustomAttribute(entryAssembly, typeof(AssemblyCopyrightAttribute));
                 return attribute?.Copyright ?? string.Empty;
             }
+
             return string.Empty;
         }
 
@@ -157,6 +170,7 @@ namespace AzureDevOpsTools.Presentation.Utility
             {
                 return Path.GetDirectoryName(entryAssembly.Location) ?? string.Empty;
             }
+
             return string.Empty;
         }
 
@@ -178,6 +192,7 @@ namespace AzureDevOpsTools.Presentation.Utility
                 AssemblyDescriptionAttribute attribute = (AssemblyDescriptionAttribute?)Attribute.GetCustomAttribute(entryAssembly, typeof(AssemblyDescriptionAttribute));
                 return attribute?.Description ?? string.Empty;
             }
+
             return string.Empty;
         }
 
@@ -189,6 +204,7 @@ namespace AzureDevOpsTools.Presentation.Utility
                 AssemblyMetadataAttribute[] attribute = (AssemblyMetadataAttribute[]?)Attribute.GetCustomAttributes(entryAssembly, typeof(AssemblyMetadataAttribute));
                 return Array.Find(attribute, x => x.Key.Equals(param, StringComparison.OrdinalIgnoreCase))?.Value ?? string.Empty;
             }
+
             return string.Empty;
         }
 
@@ -199,6 +215,7 @@ namespace AzureDevOpsTools.Presentation.Utility
             {
                 metadata = "https://welshnson.github.io/";
             }
+
             return new Uri(metadata, UriKind.Absolute);
         }
 
@@ -207,10 +224,12 @@ namespace AzureDevOpsTools.Presentation.Utility
             List<Credit> result = new List<Credit>
             {
                 new Credit("Welsh N Son", "http://www.welshnson.com/"),
-                new Credit("MahApps", "https://mahapps.com/")
+                new Credit("MahApps", "https://mahapps.com/"),
             };
             return result;
         }
     }
+#pragma warning restore SA1600 // Elements should be documented
+#pragma warning restore SA1311 // Static readonly fields should begin with upper-case letter
 #pragma warning restore CS8632 // The annotation for nullable reference types should only be used in code within a '#nullable' annotations context.
 }

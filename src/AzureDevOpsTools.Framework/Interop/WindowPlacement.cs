@@ -1,4 +1,10 @@
-﻿using System;
+//-----------------------------------------------------------------------
+// <copyright file="WindowPlacement.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
 
@@ -9,6 +15,7 @@ namespace AzureDevOpsTools.Interop
 #pragma warning disable CA1051 // Do not declare visible instance fields
 #pragma warning disable SA1307 // Accessible fields should begin with upper-case letter
 #pragma warning disable SA1600 // Elements should be documented
+#pragma warning disable SA1129 // Do not use default value type constructor
 
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
@@ -63,7 +70,7 @@ namespace AzureDevOpsTools.Interop
                 showCmd = fshowCmd,
                 minPosition = fminPosition,
                 maxPosition = fmaxPosition,
-                normalPosition = fnormalPosition
+                normalPosition = fnormalPosition,
             };
         }
     }
@@ -71,7 +78,6 @@ namespace AzureDevOpsTools.Interop
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
     public struct Rect
-
     {
         public int Left;
         public int Top;
@@ -100,7 +106,7 @@ namespace AzureDevOpsTools.Interop
 
             int[] ss = Array.ConvertAll(
                 value.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries),
-                                        v => int.Parse(v, CultureInfo.InvariantCulture));
+                v => int.Parse(v, CultureInfo.InvariantCulture));
             return ss.Length == 4 ? new Rect(ss[0], ss[1], ss[2], ss[3]) : new Rect();
         }
     }
@@ -111,6 +117,12 @@ namespace AzureDevOpsTools.Interop
     {
         public int X;
         public int Y;
+
+        public Point(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
 
         public static Point Parse(string value)
         {
@@ -124,16 +136,9 @@ namespace AzureDevOpsTools.Interop
                     new[] { ';' },
                     StringSplitOptions.RemoveEmptyEntries),
                 v => int.Parse(v, CultureInfo.InvariantCulture));
-#pragma warning disable SA1129 // Do not use default value type constructor
             return ss.Length == 2 ? new Point(ss[0], ss[1]) : new Point();
-#pragma warning restore SA1129 // Do not use default value type constructor
         }
 
-        public Point(int x, int y)
-        {
-            this.X = x;
-            this.Y = y;
-        }
 
         public override string ToString()
         {
@@ -141,6 +146,7 @@ namespace AzureDevOpsTools.Interop
         }
     }
 
+#pragma warning restore SA1129 // Do not use default value type constructor
 #pragma warning restore SA1600 // Elements should be documented
 #pragma warning restore SA1307 // Accessible fields should begin with upper-case letter
 #pragma warning restore CA1051 // Do not declare visible instance fields

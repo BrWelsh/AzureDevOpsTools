@@ -1,4 +1,9 @@
-﻿using System;
+//-----------------------------------------------------------------------
+// <copyright file="AboutApplicaitonViewModel.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -21,12 +26,6 @@ namespace AzureDevOpsTools.Presentation.ViewModels
             this.NavigateUriCommand = ReactiveCommand.CreateFromTask<Uri>(this.NavigateToUrlCommand);
         }
 
-        private async Task NavigateToUrlCommand(Uri link)
-        {
-            this.Logger.LogInformation($"Navigating to {link}");
-            await Task<object>.Run(() => UriHelper.OpenExternalLink(link));
-        }
-
         public string Title => ApplicationInfo.ProductName;
 
         public ICommand NavigateUriCommand { get; }
@@ -38,5 +37,11 @@ namespace AzureDevOpsTools.Presentation.ViewModels
         public Uri Website => ApplicationInfo.ProjectWebsite;
 
         public IEnumerable<Assembly> ApplicationAssemblies => ApplicationInfo.ApplicationAssemblies;
+
+        private async Task NavigateToUrlCommand(Uri link)
+        {
+            this.Logger.LogInformation($"Navigating to {link}");
+            await Task<object>.Run(() => UriHelper.OpenExternalLink(link));
+        }
     }
 }

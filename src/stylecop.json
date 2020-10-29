@@ -8,7 +8,15 @@
     "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
     "settings": {
         "documentationRules": {
-            "companyName": "Brian Welsh, welshnson.com"
-        }
+            "companyName": "Brian Welsh, welshnson.com",
+            "documentExposedElements": false,
+            "documentInterfaces": false,
+            "documentInternalElements": false,
+            "documentPrivateElements": false,
+            "documentPrivateFields": false
+        },
+        "orderingRules": {
+            "usingDirectivesPlacement": "outsideNamespace"
+        }        
     }
 }

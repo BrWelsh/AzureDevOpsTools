@@ -1,11 +1,19 @@
-﻿using System;
+//-----------------------------------------------------------------------
+// <copyright file="NativeMethods.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
 using System.Runtime.InteropServices;
 
 namespace AzureDevOpsTools.Interop
 {
+#pragma warning disable CA5392 // Use DefaultDllImportSearchPaths attribute for P/Invokes
+#pragma warning disable SA1600 // Elements should be documented
+
     internal static class NativeMethods
     {
-#pragma warning disable CA5392 // Use DefaultDllImportSearchPaths attribute for P/Invokes
         public const int SW_SHOWNORMAL = 1;
         public const int SW_SHOWMINIMIZED = 2;
         public const uint WM_SETICON = 0x0080;
@@ -35,8 +43,7 @@ namespace AzureDevOpsTools.Interop
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, int x, int y, int width, int height,
-                                               uint flags);
+        public static extern bool SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, int x, int y, int width, int height, uint flags);
 
         [DllImport("user32.dll", PreserveSig = true)]
         public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, long wParam, IntPtr lParam);
@@ -50,6 +57,7 @@ namespace AzureDevOpsTools.Interop
             [param: Out, MarshalAs(UnmanagedType.U4)] out uint pcKey,
             [param: Out, MarshalAs(UnmanagedType.SysInt)] out IntPtr ppVal,
             [param: Out, MarshalAs(UnmanagedType.U4)] out uint pcVal);
-#pragma warning restore CA5392 // Use DefaultDllImportSearchPaths attribute for P/Invokes
     }
+#pragma warning restore SA1600 // Elements should be documented
+#pragma warning restore CA5392 // Use DefaultDllImportSearchPaths attribute for P/Invokes
 }

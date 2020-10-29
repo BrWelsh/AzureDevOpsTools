@@ -1,9 +1,22 @@
-﻿using System;
+//-----------------------------------------------------------------------
+// <copyright file="ApplicationSettings.cs" company="Brian Welsh, welshnson.com">
+//     Copyright (c) Brian Welsh, welshnson.com. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+using System;
 
 using Newtonsoft.Json;
 
 namespace AzureDevOpsTools.Model.Settings
 {
+#pragma warning disable SA1402 // File may only contain a single type
+
+    public class ApplicationSettings
+    {
+        [JsonProperty("AzureActiveDirectoryContext")]
+        public AzureActiveDirectoryContext AzureActiveDirectoryContext { get; set; }
+    }
+
     public class AzureActiveDirectoryContext
     {
         [JsonProperty("ClientIdentifier")]
@@ -14,12 +27,6 @@ namespace AzureDevOpsTools.Model.Settings
 
         [JsonProperty("Instance")]
         public string Instance { get; set; }
-    }
-
-    public class ApplicationSettings
-    {
-        [JsonProperty("AzureActiveDirectoryContext")]
-        public AzureActiveDirectoryContext AzureActiveDirectoryContext { get; set; }
     }
 
     public class LogLevel
@@ -48,4 +55,5 @@ namespace AzureDevOpsTools.Model.Settings
         [JsonProperty("Logging")]
         public Logging Logging { get; set; }
     }
+#pragma warning restore SA1402 // File may only contain a single type
 }
