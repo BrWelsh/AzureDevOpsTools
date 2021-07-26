@@ -12,40 +12,35 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
-  <Target Name="AddCommitHashToAssemblyAttributes" BeforeTargets="GetAssemblyAttributes">
-    <ItemGroup>
-      
-      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition=" '$(SourceRevisionId)' != '' ">
-        <_Parameter1>CommitHash</_Parameter1>
-        <_Parameter2>$(SourceRevisionId)</_Parameter2>
-      </AssemblyAttribute>
+  <Target Wns="_Jha_WriteNonStringAssemblyInfoAttributes"
+          AfterTargets="CoreGenerateAssemblyInfo"
+          Condition="!Exists('$(MSBuildProjectDirectory)/Properties/AssemblyInfo.cs')"
+            >
 
-      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition=" '$(PublicRelease)' == 'true' ">
-        <_Parameter1>CloudBuildNumber</_Parameter1>
-        <_Parameter2>$(BuildVersionSimple)</_Parameter2>
-      </AssemblyAttribute>
+    <Message
+        Importance="High"
+        Text="Setting AssemblyAttribute System.CLSCompliant(false)"
+        Condition=" '$(Configuration)' != 'Release' " />
 
-      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition=" '$(PublicRelease)' == 'false' ">
-        <_Parameter1>CloudBuildNumber</_Parameter1>
-        <_Parameter2>$(BuildVersionSimple)$(SemVerBuildSuffix)</_Parameter2>
-      </AssemblyAttribute>
-    </ItemGroup>
+    <Message
+        Importance="High"
+        Text="For a different value create $(MSBuildProjectWns)/Properties/AssemblyInfo.cs with the alternate value."
+        Condition=" '$(Configuration)' != 'Release' " />
 
     <ItemGroup>
-      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition=" '$(PublicRelease)' == 'false' ">
-        <_Parameter1>RepositoryUrl</_Parameter1>
-        <_Parameter2>$(RepositoryUrl)</_Parameter2>
-      </AssemblyAttribute>
-
-      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition=" '$(PublicRelease)' == 'false' ">
-        <_Parameter1>PackageProjectUrl</_Parameter1>
-        <_Parameter2>$(PackageProjectUrl)</_Parameter2>
-      </AssemblyAttribute>
-      
+      <_AssemblyInfoLines Include="[assembly:System.CLSCompliant(false)]" />
     </ItemGroup>
-    
-    
 
+    <WriteLinesToFile
+            File="$(GeneratedAssemblyInfoFile)"
+            Lines="@(_AssemblyInfoLines)"
+            Condition=" '@(_AssemblyInfoLines)' != '' "
+            Overwrite="false" />
   </Target>
+
+  <Target Wns="_Jha_Build_ResetAssemblyInfo" BeforeTargets="CoreGenerateAssemblyInfo">
+    <Delete Files="$(GeneratedAssemblyInfoFile)" />
+  </Target>
+
   
 </Project>

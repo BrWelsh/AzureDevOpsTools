@@ -38,7 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.Extensions.Tests", "AzureDevOpsTools.Extensions.Tests\AzureDevOpsTools.Extensions.Tests.csproj", "{A68FCDAC-8C5E-48F1-BDBD-E73E6327F2D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.UnitTest.Framework", "..\..\..\..\source\repos\github\AzureDevOpsTools\src\AzureDevOpsTools.UnitTest.Framework\AzureDevOpsTools.UnitTest.Framework.csproj", "{F498E4C6-722D-495F-BD0D-62EC49E54A05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevOpsTools.UnitTest.Framework", "AzureDevOpsTools.UnitTest.Framework\AzureDevOpsTools.UnitTest.Framework.csproj", "{F498E4C6-722D-495F-BD0D-62EC49E54A05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

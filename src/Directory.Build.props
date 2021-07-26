@@ -1,94 +1,34 @@
-﻿<Project>
-  
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>    
+    <!-- Update this version number to adopt a new default version of NetAnalyzers -->
+    <NetAnalyzersVersion Condition=" '$(NetAnalyzersVersion)' == '' ">5.0.3</NetAnalyzersVersion>
   </PropertyGroup>
 
-  <!--<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">-->
-    
   <PropertyGroup>
-    <!-- Update this version number to adopt a new version of FxCopAnalyzers -->
-    <FxCopAnalyzersVersion>3.3.1</FxCopAnalyzersVersion>
-    <StyleCopAnalyzersVersion>1.1.118</StyleCopAnalyzersVersion>
-    <!--<StyleCopAnalyzersVersion>1.2.0-beta.205</StyleCopAnalyzersVersion>-->
-  </PropertyGroup>
-  
-    <Choose>
-      <When Condition=" '$(Configuration)'=='Debug' ">
-          <PropertyGroup>
-              <DebugSymbols>true</DebugSymbols>
-              <DebugType>full</DebugType>
-              <Optimize>false</Optimize>
-              <!--<OutputPath>.\bin\Debug\</OutputPath>-->
-              <DefineConstants>DEBUG;TRACE</DefineConstants>
-          </PropertyGroup>
-      </When>
-      <When Condition=" '$(Configuration)'=='Release' ">
-          <PropertyGroup>
-              <DebugSymbols>false</DebugSymbols>
-              <Optimize>true</Optimize>
-              <!--<OutputPath>.\bin\Release\</OutputPath>-->
-              <DefineConstants>TRACE</DefineConstants>
-          </PropertyGroup>
-      </When>
-  </Choose>
-
-  <PropertyGroup>    
-    <ProjectDirectory>$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine($(MSBuildThisFileDirectory), "../"))))</ProjectDirectory>
-    <ProjectBuildDirectory>$([System.IO.Path]::Combine($(ProjectDirectory), "build"))</ProjectBuildDirectory>
-    <ProjectDocsDirectory>$([System.IO.Path]::Combine($(ProjectDirectory), "docs"))</ProjectDocsDirectory>
-    <ProjectToolsDirectory>$([System.IO.Path]::Combine($(ProjectDirectory), "tools"))</ProjectToolsDirectory>
-    <SolutionDir>$([System.IO.Path]::Combine($(ProjectDirectory), "src"))</SolutionDir>
+    <!-- 
+        Use the methods provided by System.IO.Path to build the various paths. Doing so ensures paths are assembled 
+        correctly regardless of operating system since the plan is to include linux for builds of dotnet core components
+        -->
+    <WnsProjectDirectory>$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine($(MSBuildThisFileDirectory), "../"))))</WnsProjectDirectory>
+    <WnsProjectBuildDirectory>$([System.IO.Path]::Combine($(WnsProjectDirectory), "build"))</WnsProjectBuildDirectory>
+    <WnsProjectDocsDirectory>$([System.IO.Path]::Combine($(WnsProjectDirectory), "docs"))</WnsProjectDocsDirectory>
+    <WnsProjectToolsDirectory>$([System.IO.Path]::Combine($(WnsProjectDirectory), "tools"))</WnsProjectToolsDirectory>
+    <WnsSolutionDir>$([System.IO.Path]::Combine($(WnsProjectDirectory), "source"))</WnsSolutionDir>
   </PropertyGroup>
 
   <PropertyGroup>
     <TreatWarningsAsErrors Condition=" '$(Configuration)' == 'Release' ">true</TreatWarningsAsErrors>
     <TreatWarningsAsErrors Condition=" '$(Configuration)' == 'Debug' ">false</TreatWarningsAsErrors>
-    <NoWarn>CS1998,3024</NoWarn>
-    <CaRulesetName>AllRulesEnabled</CaRulesetName>
-  </PropertyGroup>
-  
-  <ItemGroup>
-    <AdditionalFiles Include='$([System.IO.Path]::Combine($(SolutionDir), "stylecop.json"))' />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <CodeAnalysisTreatWarningsAsErrors>$(TreatWarningsAsErrors)</CodeAnalysisTreatWarningsAsErrors>
-    <AnalizerPath>$([System.IO.Path]::Combine($(ProjectToolsDirectory), "Microsoft.CodeAnalysis.FxCopAnalyzers"))</AnalizerPath>
-    <RulesetsPath>$([System.IO.Path]::Combine($(AnalizerPath), "rulesets"))</RulesetsPath>
-    <CodeAnalysisRuleSet>$([System.IO.Path]::Combine($(RulesetsPath), "$(CaRulesetName).ruleset"))</CodeAnalysisRuleSet>  
+    <NoWarn>$(nowarn),CS1998,3024</NoWarn>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="$(FxCopAnalyzersVersion)">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Roslynator.Analyzers" Version="3.0.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.0.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Roslynator.CSharp" Version="1.0.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    
-    <PackageReference Include="StyleCop.Analyzers" Version="$(StyleCopAnalyzersVersion)">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37" PrivateAssets="all" />
+      <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="$(NetAnalyzersVersion)">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+      </PackageReference>
   </ItemGroup>
 
-  
-  
-  <ItemGroup Condition="Exists('$(ProjectToolsDirectory)\CommonAssemblyInfo.cs')">
-    <Compile Include="$(ProjectToolsDirectory)\CommonAssemblyInfo.cs" LinkBase="Properties" />
-  </ItemGroup>
-  
 </Project>
