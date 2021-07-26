@@ -12,7 +12,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
-  <Target Wns="_Jha_WriteNonStringAssemblyInfoAttributes"
+  <Target Name="_Wns_WriteNonStringAssemblyInfoAttributes"
           AfterTargets="CoreGenerateAssemblyInfo"
           Condition="!Exists('$(MSBuildProjectDirectory)/Properties/AssemblyInfo.cs')"
             >
@@ -38,7 +38,7 @@
             Overwrite="false" />
   </Target>
 
-  <Target Wns="_Jha_Build_ResetAssemblyInfo" BeforeTargets="CoreGenerateAssemblyInfo">
+  <Target Name="_Wns_Build_ResetAssemblyInfo" BeforeTargets="CoreGenerateAssemblyInfo">
     <Delete Files="$(GeneratedAssemblyInfoFile)" />
   </Target>
 
