@@ -37,19 +37,19 @@ namespace AzureDevOpsTools.Presentation.ViewModels
                 ILogger<MainViewModel> logger)
             : base(logger)
         {
-            this.Logger.LogDebug("Constructing");
+            Logger.LogDebug("Constructing");
             this.host = host;
             this.applicationContextService = applicationContextService;
             this.dialogCoordinator = dialogCoordinator;
 
-            this.AboutDialogCommand = ReactiveCommand.CreateFromTask(this.ShowAboutDialogExecute);
+            AboutDialogCommand = ReactiveCommand.CreateFromTask(ShowAboutDialogExecute);
         }
 
         private Task ShowAboutDialogExecute()
         {
-            AboutDialog dlg = this.host.Services.GetRequiredService<AboutDialog>();
+            AboutDialog dlg = host.Services.GetRequiredService<AboutDialog>();
             dlg.Owner = Application.Current.MainWindow;
-            dlg.DataContext = this.host.Services.GetRequiredService<IAboutApplicaitonViewModel>();
+            dlg.DataContext = host.Services.GetRequiredService<IAboutApplicaitonViewModel>();
             dlg.ShowDialog();
 
             return Task.CompletedTask;
@@ -61,11 +61,11 @@ namespace AzureDevOpsTools.Presentation.ViewModels
 
         protected override Task DoInitializeAsync(object parameter)
         {
-            this.Logger.LogInformation("Initializing");
+            Logger.LogInformation("Initializing");
 
             // return base.DoInitializeAsync(parameter);
-            this.IsReady = true;
-            this.IsBusy = false;
+            IsReady = true;
+            IsBusy = false;
             return Task.CompletedTask;
         }
 

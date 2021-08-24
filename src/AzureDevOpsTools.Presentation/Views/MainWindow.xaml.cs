@@ -32,17 +32,17 @@ namespace AzureDevOpsTools.Presentation.Views
             : this()
         {
             this.logger = logger;
-            this.userPreferences = userPrefs?.Value;
+            userPreferences = userPrefs?.Value;
 
-            this.Closing += this.MainWindow_Closing;
+            Closing += MainWindow_Closing;
         }
 
         private MainWindow()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
-        private ILogger Logger => this.logger;
+        private ILogger Logger => logger;
 
 #pragma warning disable CA1031 // Do not catch general exception types
 
@@ -51,11 +51,11 @@ namespace AzureDevOpsTools.Presentation.Views
             base.OnSourceInitialized(e);
             try
             {
-                this.LoadSettings();
+                LoadSettings();
             }
             catch (Exception ex)
             {
-                this.Logger.LogError(ex, "Error loading settings.");
+                Logger.LogError(ex, "Error loading settings.");
             }
         }
 
@@ -63,17 +63,17 @@ namespace AzureDevOpsTools.Presentation.Views
 
         private void LoadSettings()
         {
-            this.LoadWindowPlacementFromSettings(this.userPreferences.WindowPlacement);
+            this.LoadWindowPlacementFromSettings(userPreferences.WindowPlacement);
         }
 
         private void SaveSettings()
         {
-            this.userPreferences.WindowPlacement = this.SaveWindowPlacementToSettings();
+            userPreferences.WindowPlacement = this.SaveWindowPlacementToSettings();
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
-            this.SaveSettings();
+            SaveSettings();
         }
 
 #pragma warning restore IDE0032 // Use auto property

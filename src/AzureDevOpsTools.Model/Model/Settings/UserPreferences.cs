@@ -13,7 +13,7 @@ namespace AzureDevOpsTools.Model.Settings
     {
         public UserPreferences()
         {
-            this.DefaultOrganization = string.Empty;
+            DefaultOrganization = string.Empty;
         }
 
         [JsonProperty("personalAccessToken")]
@@ -30,8 +30,8 @@ namespace AzureDevOpsTools.Model.Settings
     {
         public PersonalAccessToken()
         {
-            this.Name = string.Empty;
-            this.Value = string.Empty;
+            Name = string.Empty;
+            Value = string.Empty;
         }
 
         [JsonProperty("name")]

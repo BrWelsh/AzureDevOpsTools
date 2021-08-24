@@ -19,28 +19,28 @@ namespace AzureDevOpsTools.Presentation.Services
 
     public class ApplicationContextService : ServiceBase, IApplicationContextService
     {
-        private readonly ApplicationSettings applicationSettings;
+        private readonly AppSettings appSettings;
         private readonly UserPreferences userPreferences;
 
         public ApplicationContextService(
-                IOptions<ApplicationSettings> appSettings,
+                IOptions<AppSettings> appSettings,
                 IOptions<UserPreferences> userPrefs,
                 ILogger<ApplicationContextService> logger)
             : base(logger)
         {
-            this.applicationSettings = appSettings?.Value;
-            this.userPreferences = userPrefs?.Value;
+            this.appSettings = appSettings?.Value;
+            userPreferences = userPrefs?.Value;
         }
 
-        public ApplicationSettings ApplicationSettings => this.applicationSettings;
+        public AppSettings AppSettings => appSettings;
 
-        public UserPreferences UserPreferences => this.userPreferences;
+        public UserPreferences UserPreferences => userPreferences;
 
         public void Save()
         {
             UserPreferencesRoot root = new UserPreferencesRoot
             {
-                UserPreferences = this.userPreferences,
+                UserPreferences = userPreferences,
             };
             string json = JsonSerializer.Serialize(root);
             System.IO.File.WriteAllText(ApplicationInfo.UserProfilePath, json);

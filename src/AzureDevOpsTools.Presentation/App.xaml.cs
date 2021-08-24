@@ -52,7 +52,7 @@ namespace AzureDevOpsTools.Presentation
             ProfileOptimization.SetProfileRoot(profileRoot);
             ProfileOptimization.StartProfile("Startup.profile");
 
-            this.host = App.ConfigureHost();
+            host = App.ConfigureHost();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
@@ -65,14 +65,14 @@ namespace AzureDevOpsTools.Presentation
             DispatcherUnhandledException += AppDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += AppDomainUnhandledException;
 #endif
-            this.MainWindow = this.host.Services.GetRequiredService<MainWindow>();
-            IMainViewModel vm = this.host.Services.GetRequiredService<IMainViewModel>();
+            MainWindow = host.Services.GetRequiredService<MainWindow>();
+            IMainViewModel vm = host.Services.GetRequiredService<IMainViewModel>();
 
             await vm.InitializeAsync(null);
 
-            this.MainWindow.DataContext = vm;
+            MainWindow.DataContext = vm;
 
-            this.MainWindow.Show();
+            MainWindow.Show();
 
             base.OnStartup(e);
 
@@ -81,11 +81,11 @@ namespace AzureDevOpsTools.Presentation
 
         protected override async void OnExit(ExitEventArgs e)
         {
-            this.host.Services.GetRequiredService<IApplicationContextService>().Save();
+            host.Services.GetRequiredService<IApplicationContextService>().Save();
 
-            using (this.host)
+            using (host)
             {
-                await this.host.StopAsync();
+                await host.StopAsync();
             }
 
             base.OnExit(e);
@@ -116,7 +116,7 @@ namespace AzureDevOpsTools.Presentation
         private static void ConfigureServices(IConfiguration configuration, IServiceCollection services)
         {
             services
-                .Configure<ApplicationSettings>(configuration.GetSection(nameof(ApplicationSettings)))
+                .Configure<AppSettings>(configuration.GetSection(nameof(AppSettings)))
                 .Configure<UserPreferences>(configuration.GetSection(nameof(UserPreferences)))
                 .AddTransient<MainWindow>()
                 .AddTransient<AboutDialog>()

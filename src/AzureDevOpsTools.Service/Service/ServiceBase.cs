@@ -16,6 +16,6 @@ namespace AzureDevOpsTools.Service
             this.logger = logger;
         }
 
-        public virtual ILogger Logger { get => this.logger; }
+        public virtual ILogger Logger { get => logger; }
     }
 }

@@ -18,13 +18,13 @@ namespace AzureDevOpsTools.Model.Tests
         [TestInitialize]
         public override void Initialize()
         {
-            this.preferencesRoot = new UserPreferencesRoot();
+            preferencesRoot = new UserPreferencesRoot();
         }
 
         [TestMethod]
         public void CanCreateEmptyPoco()
         {
-            Assert.IsNotNull(this.preferencesRoot);
+            Assert.IsNotNull(preferencesRoot);
 
             // Assert.AreEqual(null, preferencesRoot.UserPreferences);
             // Assert.AreEqual(null,preferencesRoot.UserPreferences.PersonalAccessToken);

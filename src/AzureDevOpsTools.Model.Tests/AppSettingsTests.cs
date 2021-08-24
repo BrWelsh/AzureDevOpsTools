@@ -11,20 +11,20 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace AzureDevOpsTools.Model.Tests
 {
     [TestClass]
-    public class ApplicationSettingsTests : UnitTestBase<ApplicationSettingsTests>
+    public class AppSettingsTests : UnitTestBase<AppSettingsTests>
     {
-        private ApplicationSettings applicationSettings;
+        private AppSettings appSettings;
 
         [TestInitialize]
         public override void Initialize()
         {
-            this.applicationSettings = new ApplicationSettings();
+            appSettings = new AppSettings();
         }
 
         [TestMethod]
         public void CanCreateEmptyPoco()
         {
-            Assert.AreNotEqual(null, this.applicationSettings);
+            Assert.AreNotEqual(null, appSettings);
         }
     }
 }

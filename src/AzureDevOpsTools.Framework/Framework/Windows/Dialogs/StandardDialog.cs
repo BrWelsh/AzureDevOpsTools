@@ -30,14 +30,14 @@ namespace AzureDevOpsTools.Framework.Windows.Dialogs
 
             // Call Initialize Component via Reflection, so you do not need
             //  to call InitializeComponent() every time in your base class
-            _ = this.GetType()
+            _ = GetType()
                 .GetMethod(
                     "InitializeComponent",
                     System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 .Invoke(this, null);
 
             // Set runtime DataContext - Designer mode will not run this code
-            this.DataContext = this;
+            DataContext = this;
         }
 
         protected override void OnSourceInitialized(EventArgs e)

@@ -28,10 +28,10 @@ namespace AzureDevOpsTools.Application.Tests.Services
         [TestInitialize]
         public override void Initialize()
         {
-            this.host = Host.CreateDefaultBuilder()
+            host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    services.Configure<ApplicationSettings>(context.Configuration.GetSection(nameof(ApplicationSettings)));
+                    services.Configure<AppSettings>(context.Configuration.GetSection(nameof(AppSettings)));
                     services.Configure<UserPreferences>(context.Configuration.GetSection(nameof(UserPreferences)));
                     services.AddSingleton<IApplicationContextService, ApplicationContextService>();
                 })
@@ -53,51 +53,51 @@ namespace AzureDevOpsTools.Application.Tests.Services
                 .ConfigureHostConfiguration((builder) => builder.AddCommandLine(Environment.GetCommandLineArgs()))
                 .Build();
 
-            this.applicationContextService = this.host.Services.GetRequiredService<IApplicationContextService>();
+            applicationContextService = host.Services.GetRequiredService<IApplicationContextService>();
         }
 
         [TestMethod]
         public void HostBuilderCreationTest()
         {
-            Assert.IsNotNull(this.host);
+            Assert.IsNotNull(host);
         }
 
         [TestMethod]
         public void ValidateApplicationContextServiceTest()
         {
-            Assert.IsNotNull(this.applicationContextService);
+            Assert.IsNotNull(applicationContextService);
         }
 
         [TestMethod]
         public void ValidateLoggerTest()
         {
-            Assert.IsNotNull(this.applicationContextService.Logger);
+            Assert.IsNotNull(applicationContextService.Logger);
         }
 
         [TestMethod]
-        public void ValidateApplicationSettingsTest()
+        public void ValidateAppSettingsTest()
         {
-            Assert.IsNotNull(this.applicationContextService.ApplicationSettings);
+            Assert.IsNotNull(applicationContextService.AppSettings);
         }
 
         [TestMethod]
         public void ValidateUserPreferencesTest()
         {
-            Assert.IsNotNull(this.applicationContextService.UserPreferences);
-            Assert.IsNotNull(this.applicationContextService.UserPreferences);
-            Assert.IsNotNull(this.applicationContextService.UserPreferences.DefaultOrganization);
-            Assert.AreNotEqual(string.Empty, this.applicationContextService.UserPreferences.DefaultOrganization);
-            Assert.IsNotNull(this.applicationContextService.UserPreferences.PersonalAccessToken);
-            Assert.AreNotEqual(string.Empty, this.applicationContextService.UserPreferences.PersonalAccessToken.Name);
-            Assert.AreNotEqual(string.Empty, this.applicationContextService.UserPreferences.PersonalAccessToken.Value);
+            Assert.IsNotNull(applicationContextService.UserPreferences);
+            Assert.IsNotNull(applicationContextService.UserPreferences);
+            Assert.IsNotNull(applicationContextService.UserPreferences.DefaultOrganization);
+            Assert.AreNotEqual(string.Empty, applicationContextService.UserPreferences.DefaultOrganization);
+            Assert.IsNotNull(applicationContextService.UserPreferences.PersonalAccessToken);
+            Assert.AreNotEqual(string.Empty, applicationContextService.UserPreferences.PersonalAccessToken.Name);
+            Assert.AreNotEqual(string.Empty, applicationContextService.UserPreferences.PersonalAccessToken.Value);
         }
 
         [TestCleanup]
         public override void TestCleanup()
         {
-            using (this.host)
+            using (host)
             {
-                this.host.StopAsync().Wait();
+                host.StopAsync().Wait();
             }
         }
     }

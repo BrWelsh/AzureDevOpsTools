@@ -23,7 +23,7 @@ namespace AzureDevOpsTools.Presentation.ViewModels
         public AboutApplicaitonViewModel(ILogger<AboutApplicaitonViewModel> logger)
             : base(logger)
         {
-            this.NavigateUriCommand = ReactiveCommand.CreateFromTask<Uri>(this.NavigateToUrlCommand);
+            NavigateUriCommand = ReactiveCommand.CreateFromTask<Uri>(NavigateToUrlCommand);
         }
 
         public string Title => ApplicationInfo.ProductName;
@@ -40,7 +40,7 @@ namespace AzureDevOpsTools.Presentation.ViewModels
 
         private async Task NavigateToUrlCommand(Uri link)
         {
-            this.Logger.LogInformation($"Navigating to {link}");
+            Logger.LogInformation($"Navigating to {link}");
             await Task<object>.Run(() => UriHelper.OpenExternalLink(link));
         }
     }

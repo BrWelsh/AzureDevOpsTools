@@ -34,12 +34,12 @@ namespace AzureDevOpsTools.Interop
             return string.Format(
                 CultureInfo.InvariantCulture,
                 "{0}|{1}|{2}|{3}|{4}|{5}",
-                this.length,
-                this.flags,
-                this.showCmd,
-                this.minPosition,
-                this.maxPosition,
-                this.normalPosition);
+                length,
+                flags,
+                showCmd,
+                minPosition,
+                maxPosition,
+                normalPosition);
         }
 
         public static WindowPlacement Parse(string value)
@@ -86,15 +86,15 @@ namespace AzureDevOpsTools.Interop
 
         public Rect(int left, int top, int width, int height)
         {
-            this.Left = left;
-            this.Top = top;
-            this.Width = width;
-            this.Height = height;
+            Left = left;
+            Top = top;
+            Width = width;
+            Height = height;
         }
 
         public override string ToString()
         {
-            return string.Format(CultureInfo.InvariantCulture, "{0};{1};{2};{3}", this.Left, this.Top, this.Width, this.Height);
+            return string.Format(CultureInfo.InvariantCulture, "{0};{1};{2};{3}", Left, Top, Width, Height);
         }
 
         public static Rect Parse(string value)
@@ -120,8 +120,8 @@ namespace AzureDevOpsTools.Interop
 
         public Point(int x, int y)
         {
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
         }
 
         public static Point Parse(string value)
@@ -142,7 +142,7 @@ namespace AzureDevOpsTools.Interop
 
         public override string ToString()
         {
-            return string.Format(CultureInfo.InvariantCulture, "{0};{1}", this.X, this.Y);
+            return string.Format(CultureInfo.InvariantCulture, "{0};{1}", X, Y);
         }
     }
 

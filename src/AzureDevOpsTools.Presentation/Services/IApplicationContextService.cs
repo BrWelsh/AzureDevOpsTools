@@ -11,7 +11,7 @@ namespace AzureDevOpsTools.Presentation.Services
 {
     public interface IApplicationContextService : IService
     {
-        ApplicationSettings ApplicationSettings { get; }
+        AppSettings AppSettings { get; }
 
         UserPreferences UserPreferences { get; }
 

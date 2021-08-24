@@ -14,7 +14,7 @@ namespace AzureDevOpsTools.Presentation.Views.Dialogs
     {
         public AboutDialog()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

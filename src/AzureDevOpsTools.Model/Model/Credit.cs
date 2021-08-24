@@ -11,8 +11,8 @@ namespace AzureDevOpsTools.Model
     {
         public Credit(string name, Uri uri)
         {
-            this.Name = name;
-            this.Uri = uri;
+            Name = name;
+            Uri = uri;
         }
 
         public Credit(string name, string uri)
