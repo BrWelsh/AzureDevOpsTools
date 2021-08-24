@@ -1,28 +1,37 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- workaround for https://github.com/NuGet/Home/issues/5894 -->
+  <PropertyGroup>
+    <_SdkLanguageName>CSharp</_SdkLanguageName>
+  </PropertyGroup>
+  
+  <Import Project="obj\*.props" Condition=" '$(MSBuildProjectExtension)' == '.tmp_proj'" />
+  
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows10.0.19041</TargetFramework>
     <UseWPF>true</UseWPF>
     <PackageId>AzureDevOpsTools</PackageId>
     <AssemblyName>AzureDevOpsTools</AssemblyName>
+    <XamlDebuggingInformation>True</XamlDebuggingInformation>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>0.0.9-alpha.1</Version>
-    <InformationalVersion>0.0.9-alpha.1</InformationalVersion>
-    <Authors>Brian Welsh, welshnson.com</Authors>
-    <Company>Brian Welsh, welshnson.com</Company>
-    <Product>welshnson.com Azure DevOps Tools</Product>
     <Description>Azure DevOps tools on the desktop</Description>
-    <Copyright>©2020, Brian Welsh, welshnson.com</Copyright>
+    
+    <UserSecretsId>43c81fe3-af44-4562-804a-6210d3298fc7</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="appSettings.Development.json" />
     <None Remove="appSettings.json" />
+    <None Remove="Resources\Images\about-header.png" />
     <None Remove="Resources\Images\splashscreen.png" />
     <None Remove="userPreferences.json" />
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -39,17 +48,28 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Converters\" />
     <Folder Include="Views\Controls\" />
     <Folder Include="Views\Pages\" />
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.2.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0-rc.1.20451.14" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-rc.1.20451.14" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="ReactiveUI.WPF" Version="11.5.35" />
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\AzureDevOpsTools.Framework\AzureDevOpsTools.Framework.csproj" />
+    <ProjectReference Include="..\AzureDevOpsTools.Model\AzureDevOpsTools.Model.csproj" />
+    <ProjectReference Include="..\AzureDevOpsTools.Service\AzureDevOpsTools.Service.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Resource Include="Resources\Images\about-header.png" />
     <Resource Include="Resources\Images\splashscreen.png" />
   </ItemGroup>
 

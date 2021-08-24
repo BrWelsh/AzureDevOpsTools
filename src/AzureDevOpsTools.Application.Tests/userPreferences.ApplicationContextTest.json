@@ -1,0 +1,9 @@
+{
+    "userPreferences": {
+        "personalAccessToken": {
+            "name": "sudo-token",
+            "value": "fake-testing-token"
+        },
+        "defaultOrganization": "default-organization"
+    }
+}

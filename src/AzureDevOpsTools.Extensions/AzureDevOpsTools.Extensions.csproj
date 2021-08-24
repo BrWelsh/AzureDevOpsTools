@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows10.0.19041</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>AzureDevOpsTools</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>Azure DevOps tools on the desktop</Description>
+    
+  </PropertyGroup>
+
+</Project>
